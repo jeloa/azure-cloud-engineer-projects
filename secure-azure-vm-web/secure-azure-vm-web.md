@@ -104,6 +104,9 @@ This section walks you through the deployment **as if you were on the job**, exp
    * Action: Allow
    * Priority: 100
    * Name: `Allow-HTTP`
+  
+![Allow HTTP](screenshots/Allow-HTTP.jpg)
+  
 5. Add rule to allow SSH (restricted):
 
    * Source: IP Addresses
@@ -114,7 +117,7 @@ This section walks you through the deployment **as if you were on the job**, exp
    * Priority: 110
    * Name: `Allow-SSH-MyIP`
 
- Screenshot: NSG inbound rules
+ ![Allow SSH](screenshots/Allow-SSH.jpg)
 
 ---
 
@@ -140,7 +143,7 @@ This section walks you through the deployment **as if you were on the job**, exp
 4. Leave remaining settings as default
 5. Review + Create → Create
 
- Screenshot: VM overview blade
+  ![VM Overview](screenshots/Allow-SSH.jpg)
 
 ---
 
@@ -152,7 +155,6 @@ This section walks you through the deployment **as if you were on the job**, exp
 2. System-assigned → Toggle **On**
 3. Click **Save**
 
- Screenshot: Managed Identity enabled
 
 ---
 
@@ -166,7 +168,7 @@ ssh azureuser@<VM-PUBLIC-IP>
 
 You should be able to connect **only from your allowed IP**.
 
- Screenshot: Successful SSH session
+ ![Successful SSH Session](screenshots/Allow-SSH.jpg)
 
 ---
 
@@ -187,7 +189,7 @@ Open a browser and navigate to:
 http://<VM-PUBLIC-IP>
 ```
 
- Screenshot: Nginx default page
+![Nginx Defaulty Page](screenshots/Nginx.jpg)
 
 ---
 
