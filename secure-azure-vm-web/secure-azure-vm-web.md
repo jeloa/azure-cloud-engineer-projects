@@ -130,7 +130,7 @@ This section walks you through the deployment **as if you were on the job**, exp
 
    * Name: `vm-secure-web`
    * Image: Ubuntu Server LTS
-   * Size: B1s (cost-efficient for testing)
+   * Size: B1s (cost-efficient for testing) - select an alternative available size if B1s is unavailable in your region
    * Authentication type: SSH public key
    * Username: `azureuser`
 3. Networking:
