@@ -143,7 +143,7 @@ This section walks you through the deployment **as if you were on the job**, exp
 4. Leave remaining settings as default
 5. Review + Create → Create
 
-  ![VM Overview](screenshots/Allow-SSH.jpg)
+  ![VM Overview](screenshots/VM-Overview.jpg)
 
 ---
 
