@@ -168,6 +168,17 @@ ssh azureuser@<VM-PUBLIC-IP>
 
 You should be able to connect **only from your allowed IP**.
 
+## Option B:
+- Windows PowerShell (Recommended Alternative)
+If you are working from a Windows local machine, you can connect directly using PowerShell by pointing to your specific `.pem` key file:
+  1. Open PowerShell on your computer.
+  2. Run the following command (replace the path with your actual file location):
+     ```
+     ssh -i "private-key-file-path" azureuser@<VM-PUBLIC-IP>
+     ```
+  3. When prompted with the authenticity warning, type yes to establish the connection.
+
+Note: You should be able to connect only from your `allowed IP` as configured in your Network Security Group.
  ![Successful SSH Session](screenshots/Successful-SSH-Session.jpg)
 
 ---
