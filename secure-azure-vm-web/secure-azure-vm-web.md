@@ -168,7 +168,7 @@ ssh azureuser@<VM-PUBLIC-IP>
 
 You should be able to connect **only from your allowed IP**.
 
- ![Successful SSH Session](screenshots/Allow-SSH.jpg)
+ ![Successful SSH Session](screenshots/Successful-SSH-Session.jpg)
 
 ---
 
