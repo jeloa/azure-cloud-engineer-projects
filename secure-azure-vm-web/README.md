@@ -1,46 +1,49 @@
 # Secure Azure VM Web Hosting: Production-Style Deployment
 
-##  Project Purpose
-In modern cloud environments, a "default" deployment is often an insecure one. This project was built to demonstrate a **Security-First** approach to cloud provisioning, moving beyond basic resource creation to implement enterprise-grade hardening.
+## Project Purpose
+In modern cloud environments, a "default" deployment is often an insecure one. This project demonstrates a **Security-First** approach to cloud provisioning, moving beyond basic resource creation to implement enterprise-grade hardening. 
 
 The goal was to solve a common real-world problem: **How do we host a public-facing application without exposing the underlying infrastructure to unnecessary risk?**
 
-##  The "Why" Behind the Design
-This project addresses three critical security vulnerabilities found in standard cloud deployments:
+## The "Why" Behind the Design
+This project addresses three critical security vulnerabilities:
+* **Exposure of Management Ports:** Rather than leaving SSH open to the world, I implemented **IP-restricted access** via Network Security Groups (NSGs), whitelisting only my specific public IP.
+* **Credential Leakage:** By enabling a **System-Assigned Managed Identity**, I eliminated the need for hardcoded service principal secrets or API keys.
+* **Lack of Perimeter Control:** I utilized a **Zero-Trust** networking model where all inbound traffic is denied by default, explicitly allowing only Port 80 (HTTP) and Port 22 (SSH).
 
-* **Exposure of Management Ports:** Rather than leaving SSH open to the world (a magnet for botnets), I implemented **IP-restricted access** via Network Security Groups (NSGs).
-* **Credential Leakage:** By enabling **System-Assigned Managed Identity**, I eliminated the need for hardcoded service principal secrets or API keys within the server configuration.
-* **Lack of Perimeter Control:** I utilized a **Zero-Trust** networking model where all inbound traffic is denied by default, only explicitly allowing HTTP (80) for the application and SSH (22) for my specific IP.
-
-##  Architecture & Traffic Flow
-The environment is built using a modular approach inside a dedicated Azure Resource Group.
-
+## Architecture & Traffic Flow
+The environment is built inside a dedicated Azure Resource Group using a modular approach:
+* **Internet Traffic:** Users access the web application via the Public IP over Port 80.
+* **Firewall Layer (NSG):** The NSG inspects packets; HTTP is allowed, while SSH is restricted to my Trusted IP (49.149.106.101).
+* **Compute Layer:** A hardened Linux VM running Nginx, utilizing a cost-efficient SKU (B1s or equivalent available size like B1ls/B2s).
 
 
-1.  **Internet Traffic:** Users access the web application via the Public IP over Port 80.
-2.  **Firewall Layer (NSG):** The NSG inspects the packet. If it's HTTP, it's allowed; if it's SSH, it checks against my Trusted IP; everything else is dropped.
-3.  **Compute Layer:** A hardened Linux VM running Nginx, utilizing a B1s SKU for optimal cost-efficiency.
 
-##  Technical Stack
+## Technical Stack
 * **Cloud Provider:** Microsoft Azure
 * **Infrastructure:** Virtual Network (VNet), Subnets, Public IP
-* **Security:** Network Security Groups (NSGs), SSH Key-based Auth, Managed Identity
+* **Security:** Network Security Groups (NSGs), SSH RSA Key-based Auth, Managed Identity
 * **Web Server:** Nginx (Ubuntu Linux)
 
-##  Key Skills Demonstrated
+## 🛠️ Challenges & Troubleshooting
+* **Environment Constraints:** Encountered region-specific availability issues for the B1s VM size; successfully pivoted to an alternative available SKU to maintain project momentum.
+* **Cross-Platform Connectivity:** Resolved a "No such file or directory" error when attempting to access local `.pem` keys from the browser-based Azure Cloud Shell. 
+* **The Solution:** Migrated to a **local Windows PowerShell** workflow, utilizing the `-i` flag to point directly to the RSA private key for a successful secure handshake.
+
+## Key Skills Demonstrated
 * **Cloud Security:** Implementing the Principle of Least Privilege (PoLP) at the network level.
 * **Identity Management:** Configuring Azure RBAC and Managed Identities to remove static credentials.
-* **Linux Administration:** Remote configuration and web server deployment via secure shell.
-* **Governance:** Using standardized naming conventions (e.g., `rg-`, `vnet-`, `nsg-`) consistent with the Azure Cloud Adoption Framework.
+* **Linux Administration:** Remote configuration and Nginx deployment via secure shell.
+* **Governance:** Using standardized naming conventions (e.g., `rg-`, `vnet-`, `nsg-`).
 
-##  Impact & Lessons Learned
-This project serves as a template for a **production-ready landing zone**. It highlights the balance between **accessibility** (keeping the site live for users) and **security** (keeping the server invisible to attackers). 
+## Impact & Lessons Learned
+This project serves as a template for a **production-ready landing zone**. It highlights the balance between accessibility (keeping the site live) and security (keeping the server invisible to attackers). 
 
-The primary takeaway was the importance of "Defense in Depth"—ensuring that even if one layer is misconfigured, other controls (like Managed Identity and SSH Keys) continue to protect the environment.
-
----
-
-**Status:**  Completed  
+**Status:** Completed  
 **Role:** Junior Cloud Engineer  
 **Clean-up:** All resources deleted post-validation to maintain cost hygiene.
 
+---
+### 🚀 Future Enhancements
+* **Infrastructure as Code (IaC):** Automate this entire deployment using Terraform or Azure Bicep.
+* **SSL/TLS Encryption:** Implement Certbot/Let's Encrypt to upgrade from HTTP to HTTPS.
