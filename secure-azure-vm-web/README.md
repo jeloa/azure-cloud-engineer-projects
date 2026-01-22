@@ -1,4 +1,4 @@
-# Secure Azure VM Web Hosting: Production-Style Deployment
+# 01 - Secure Azure VM Web Hosting: Production-Style Deployment
 
 ## Project Purpose
 In modern cloud environments, a "default" deployment is often an insecure one. This project demonstrates a **Security-First** approach to cloud provisioning, moving beyond basic resource creation to implement enterprise-grade hardening. 
