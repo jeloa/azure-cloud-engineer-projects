@@ -36,7 +36,7 @@ The environment is intentionally designed to mirror how cloud resources are depl
 * Internet → Public IP → NSG → VM (HTTP 80)
 * Administrative access (SSH) restricted to trusted IP only
 
-*(Insert Architecture Diagram Screenshot Here)*
+![Architecture Diagram](screenshots/Architecture-Diagram.jpg)
 
 ---
 
