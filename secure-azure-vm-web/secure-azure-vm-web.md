@@ -58,7 +58,7 @@ This section walks you through the deployment **as if you were on the job**, exp
    * Region: Choose the closest region to you (e.g., Southeast Asia)
 3. Click **Review + Create** → **Create**
 
- Screenshot: Resource Group overview page
+
 
 ---
 
@@ -79,7 +79,7 @@ This section walks you through the deployment **as if you were on the job**, exp
 4. Leave other settings as default
 5. Review + Create → Create
 
- Screenshot: VNet address space and subnet
+
 
 ---
 
