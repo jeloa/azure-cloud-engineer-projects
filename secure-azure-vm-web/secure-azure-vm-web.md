@@ -40,53 +40,139 @@ The environment is intentionally designed to mirror how cloud resources are depl
 
 ---
 
-## Step-by-Step Implementation
+## Step-by-Step Implementation (Mentor-Guided)
 
-### 1. Create a Resource Group
+This section walks you through the deployment **as if you were on the job**, explaining not just *what* to do, but *why* it is done this way.
 
-* Region: Choose a nearby Azure region (e.g., Southeast Asia)
-* Naming convention: `rg-secure-vm-web`
+---
 
-### 2. Configure Networking
+### Step 1: Create a Resource Group
 
-* Create a Virtual Network: `vnet-secure-web`
-* Address space: `10.0.0.0/16`
-* Subnet: `subnet-web (10.0.1.0/24)`
+**Why this matters:** Resource Groups act as logical containers. In real environments, deleting a project cleanly is critical.
 
-### 3. Create Network Security Group (NSG)
+1. Go to **Azure Portal** → **Resource groups** → **Create**
+2. Configure:
 
-**Inbound Rules:**
+   * Subscription: Your active subscription
+   * Resource Group Name: `rg-secure-vm-web`
+   * Region: Choose the closest region to you (e.g., Southeast Asia)
+3. Click **Review + Create** → **Create**
 
-* Allow HTTP (Port 80) from Internet
-* Allow SSH (Port 22) **only from your public IP**
-* Deny all other inbound traffic (default)
+ Screenshot: Resource Group overview page
 
-**Outbound Rules:**
+---
 
-* Default Azure outbound rules
+### Step 2: Create the Virtual Network (VNet)
 
-*(Insert NSG Rules Screenshot Here)*
+**Why this matters:** Every production VM lives inside a controlled network.
 
-### 4. Deploy the Virtual Machine
+1. Go to **Virtual networks** → **Create**
+2. Basics:
 
-* OS: Linux (Ubuntu LTS)
-* Size: B1s (cost-efficient)
-* Authentication: SSH Key (no password login)
-* Public IP: Enabled
-* Attach NSG to VM network interface
+   * Name: `vnet-secure-web`
+   * Region: Same as Resource Group
+3. IP Addresses:
 
-*(Insert VM Overview Screenshot Here)*
+   * Address space: `10.0.0.0/16`
+   * Subnet name: `subnet-web`
+   * Subnet range: `10.0.1.0/24`
+4. Leave other settings as default
+5. Review + Create → Create
 
-### 5. Enable Managed Identity
+ Screenshot: VNet address space and subnet
 
-* Enable **System-assigned Managed Identity** on the VM
-* No secrets or credentials stored in code or configuration
+---
 
-*(Insert Managed Identity Screenshot Here)*
+### Step 3: Create the Network Security Group (NSG)
 
-### 6. Install and Configure Web Server
+**Why this matters:** NSGs act as firewalls. This is where most cloud security mistakes happen.
 
-SSH into the VM and run:
+1. Go to **Network Security Groups** → **Create**
+2. Configure:
+
+   * Name: `nsg-secure-web`
+   * Resource Group: `rg-secure-vm-web`
+   * Region: Same region
+3. After creation, go to **Inbound security rules**
+4. Add rule to allow HTTP:
+
+   * Source: Any
+   * Source port ranges: *
+   * Destination: Any
+   * Destination port ranges: 80
+   * Protocol: TCP
+   * Action: Allow
+   * Priority: 100
+   * Name: `Allow-HTTP`
+5. Add rule to allow SSH (restricted):
+
+   * Source: IP Addresses
+   * Source IP: *Your public IP*
+   * Destination port: 22
+   * Protocol: TCP
+   * Action: Allow
+   * Priority: 110
+   * Name: `Allow-SSH-MyIP`
+
+ Screenshot: NSG inbound rules
+
+---
+
+### Step 4: Deploy the Virtual Machine
+
+**Why this matters:** VM configuration reflects cost, security, and performance decisions.
+
+1. Go to **Virtual Machines** → **Create** → Azure virtual machine
+2. Basics:
+
+   * Name: `vm-secure-web`
+   * Image: Ubuntu Server LTS
+   * Size: B1s (cost-efficient for testing)
+   * Authentication type: SSH public key
+   * Username: `azureuser`
+3. Networking:
+
+   * Virtual network: `vnet-secure-web`
+   * Subnet: `subnet-web`
+   * Public IP: Create new
+   * NIC network security group: Advanced
+   * Configure NSG: `nsg-secure-web`
+4. Leave remaining settings as default
+5. Review + Create → Create
+
+ Screenshot: VM overview blade
+
+---
+
+### Step 5: Enable Managed Identity
+
+**Why this matters:** Managed Identity removes the need for stored credentials.
+
+1. Go to the VM → **Identity**
+2. System-assigned → Toggle **On**
+3. Click **Save**
+
+ Screenshot: Managed Identity enabled
+
+---
+
+### Step 6: Connect to the VM Securely (SSH)
+
+**Why this matters:** Secure administration is a real operational task.
+
+```bash
+ssh azureuser@<VM-PUBLIC-IP>
+```
+
+You should be able to connect **only from your allowed IP**.
+
+ Screenshot: Successful SSH session
+
+---
+
+### Step 7: Install and Configure Nginx Web Server
+
+**Why this matters:** This simulates hosting a real workload.
 
 ```bash
 sudo apt update
@@ -95,9 +181,13 @@ sudo systemctl enable nginx
 sudo systemctl start nginx
 ```
 
-Verify the default Nginx page loads via the VM public IP.
+Open a browser and navigate to:
 
-*(Insert Web Page Screenshot Here)*
+```
+http://<VM-PUBLIC-IP>
+```
+
+ Screenshot: Nginx default page
 
 ---
 
@@ -145,7 +235,7 @@ To avoid unnecessary charges:
 
 ---
 
-## Insights
+## Resume Bullet (Ready to Use)
 
 > Deployed and secured a public-facing Azure VM hosting a web application using Network Security Groups, restricted administrative access, and managed identities following least-privilege principles.
 
