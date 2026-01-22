@@ -145,7 +145,7 @@ To avoid unnecessary charges:
 
 ---
 
-## Resume Bullet (Ready to Use)
+## Insights
 
 > Deployed and secured a public-facing Azure VM hosting a web application using Network Security Groups, restricted administrative access, and managed identities following least-privilege principles.
 
@@ -161,5 +161,5 @@ To avoid unnecessary charges:
 
 ## Status
 
-✅ Completed – Production-style cloud deployment
+ Completed 
 
