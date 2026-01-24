@@ -25,7 +25,7 @@ The environment is built inside a dedicated Azure Resource Group using a modular
 * **Security:** Network Security Groups (NSGs), SSH RSA Key-based Auth, Managed Identity
 * **Web Server:** Nginx (Ubuntu Linux)
 
-## 🛠️ Challenges & Troubleshooting
+##  Challenges & Troubleshooting
 * **Environment Constraints:** Encountered region-specific availability issues for the B1s VM size; successfully pivoted to an alternative available SKU to maintain project momentum.
 * **Cross-Platform Connectivity:** Resolved a "No such file or directory" error when attempting to access local `.pem` keys from the browser-based Azure Cloud Shell. 
 * **The Solution:** Migrated to a **local Windows PowerShell** workflow, utilizing the `-i` flag to point directly to the RSA private key for a successful secure handshake.
@@ -44,6 +44,6 @@ This project serves as a template for a **production-ready landing zone**. It hi
 **Clean-up:** All resources deleted post-validation to maintain cost hygiene.
 
 ---
-### 🚀 Future Enhancements
+###  Future Enhancements
 * **Infrastructure as Code (IaC):** Automate this entire deployment using Terraform or Azure Bicep.
 * **SSL/TLS Encryption:** Implement Certbot/Let's Encrypt to upgrade from HTTP to HTTPS.
