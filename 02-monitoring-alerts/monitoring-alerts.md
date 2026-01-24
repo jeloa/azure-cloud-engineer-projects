@@ -51,7 +51,7 @@ Rather than passively viewing metrics, this project simulates **real-world monit
    * Region: Same region as the VM
 3. Review + Create → Create
 
- Screenshot: Log Analytics Workspace overview
+ ![Architecture Diagram](screenshots/Log-Analytics-Workspace-overview.jpg)
 
 ---
 
@@ -66,13 +66,16 @@ Rather than passively viewing metrics, this project simulates **real-world monit
    * Select the existing workspace: `law-secure-web`
 4. Confirm installation of monitoring agent
 
- Screenshot: VM Insights enabled
+
 
 ---
 
 ### Step 3: Configure Diagnostic Settings
+**Option A (Original Plan):** Enable the "Classic" Linux Diagnostic Extension. (Skipped: Identified as legacy/deprecated; requires Python 2 and an external Storage Account).
 
 **Why this matters:** Diagnostic settings control what data is collected and retained.
+
+
 
 1. Go to **Virtual machine** → **Diagnostic settings**
 2. Click **Add diagnostic setting**
@@ -83,6 +86,24 @@ Rather than passively viewing metrics, this project simulates **real-world monit
    * Destination: Send to Log Analytics workspace
    * Workspace: `law-secure-web`
 4. Save
+
+## Option B: Configure Data Collection Rules (Modern Diagnostics)
+* Modern Implementation - Used):** Implemented **Data Collection Rules (DCR)** using the **Azure Monitor Agent (AMA)** for a direct-to-workspace stream.
+
+**Why this matters:** Diagnostic settings control what data is collected and retained. Defining these settings ensures we aren't paying for "noise" while ensuring critical system logs are available for troubleshooting.
+
+
+**Implementation Details (Option B):**
+1.  **Rule Selection:** Accessed the **Data Collection Rule (DCR)** created during the VM Insights onboarding (e.g., `MSVMI-southeastasia-vm-secure-web`).
+2.  **Resource Association:** Confirmed `vm-secure-web` was listed under **Resources** with a "Succeeded" association.
+3.  **Data Source Configuration:**
+    * **Performance Counters:** Added `% Processor Time`, `Available Memory`, and `Disk Writes/sec`. Custom sample rate set to 60 seconds.
+    * **Linux Syslog:** Enabled `LOG_AUTH`, `LOG_USER`, and `LOG_SYSLOG` with a minimum level of `Info`.
+4.  **Destination Routing:** Configured the rule to push all collected data sources directly to the `law-secure-web` Log Analytics Workspace.
+
+ **Screenshot: Data Collection Rule (DCR) configuration**
+
+
 
  Screenshot: Diagnostic settings configuration
 
