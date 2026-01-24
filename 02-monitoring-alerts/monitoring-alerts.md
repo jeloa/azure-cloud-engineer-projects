@@ -33,7 +33,7 @@ Rather than passively viewing metrics, this project simulates **real-world monit
 * VM metrics and logs → Log Analytics Workspace
 * Azure Monitor evaluates metrics → triggers alerts → notifies operator
 
-*(Insert Monitoring Architecture Diagram Here)*
+![Architecture Diagram](screenshots/architecture-diagram.jpg)
 
 ---
 
