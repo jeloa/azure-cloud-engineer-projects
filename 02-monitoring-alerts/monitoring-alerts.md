@@ -51,7 +51,7 @@ Rather than passively viewing metrics, this project simulates **real-world monit
    * Region: Same region as the VM
 3. Review + Create → Create
 
- ![Architecture Diagram](screenshots/Log-Analytics-Workspace-overview.jpg)
+ ![Log Analytics Workspace overview](screenshots/Log-Analytics-Workspace-overview.jpg)
 
 ---
 
@@ -71,6 +71,7 @@ Rather than passively viewing metrics, this project simulates **real-world monit
 ---
 
 ### Step 3: Configure Diagnostic Settings
+
 **Option A (Original Plan):** Enable the "Classic" Linux Diagnostic Extension. (Skipped: Identified as legacy/deprecated; requires Python 2 and an external Storage Account).
 
 **Why this matters:** Diagnostic settings control what data is collected and retained.
@@ -88,10 +89,10 @@ Rather than passively viewing metrics, this project simulates **real-world monit
 4. Save
 
 ## Option B: Configure Data Collection Rules (Modern Diagnostics)
-* Modern Implementation - Used):** Implemented **Data Collection Rules (DCR)** using the **Azure Monitor Agent (AMA)** for a direct-to-workspace stream.
+
+**Modern Implementation - Used):** Implemented **Data Collection Rules (DCR)** using the **Azure Monitor Agent (AMA)** for a direct-to-workspace stream.
 
 **Why this matters:** Diagnostic settings control what data is collected and retained. Defining these settings ensures we aren't paying for "noise" while ensuring critical system logs are available for troubleshooting.
-
 
 **Implementation Details (Option B):**
 1.  **Rule Selection:** Accessed the **Data Collection Rule (DCR)** created during the VM Insights onboarding (e.g., `MSVMI-southeastasia-vm-secure-web`).
@@ -101,29 +102,42 @@ Rather than passively viewing metrics, this project simulates **real-world monit
     * **Linux Syslog:** Enabled `LOG_AUTH`, `LOG_USER`, and `LOG_SYSLOG` with a minimum level of `Info`.
 4.  **Destination Routing:** Configured the rule to push all collected data sources directly to the `law-secure-web` Log Analytics Workspace.
 
- **Screenshot: Data Collection Rule (DCR) configuration**
-
-
-
- Screenshot: Diagnostic settings configuration
 
 ---
 
 ### Step 4: Validate Log Collection with KQL
+**Why this matters:** Engineers must verify that the telemetry pipeline is active before trusting automated alerts. Validating "Heartbeat" and "Syslog" data proves the agent-to-workspace connection is functional.
 
-**Why this matters:** Engineers verify logs before trusting alerts.
+1.  Go to **Log Analytics workspace** (`law-secure-web`) -> **Logs**.
+2.  **Initial Validation (Connectivity):**
+    Run the following query to confirm the VM is communicating:
+    ```kql
+    Heartbeat
+    | project TimeGenerated, Computer, OSType, Version
+    | order by TimeGenerated desc
+    ```
 
-1. Go to **Log Analytics workspace** → **Logs**
-2. Run:
 
-```kql
-Perf
-| limit 10
-```
+    
+3.  **Broad Data Verification:**
+    Run a global search to verify which data tables are actively ingesting:
+    ```kql
+    search *
+    | where TimeGenerated > ago(10m)
+    | summarize count() by $table
+    ```
 
-3. Confirm results are returned
 
- Screenshot: KQL query results
+    
+4.  **Confirm Results:** Verified that both `Heartbeat` and `Syslog` tables are successfully returning data, confirming the Azure Monitor Agent (AMA) and Data Collection Rules (DCR) are properly configured.
+
+ **Initial Validation (Connectivity):**
+ 
+ ![Initial Validation](screenshots/Initial-Validation.jpg)
+
+**Broad Data Verification:**
+
+ ![Broad Data Verification](screenshots/Broad-Data-Verification.jpg)
 
 ---
 
