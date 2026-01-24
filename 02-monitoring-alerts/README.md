@@ -11,34 +11,45 @@ This project implements three pillars of modern Site Reliability Engineering (SR
 * **Automated Incident Response:** Rather than manually checking CPU graphs, I configured **Action Groups** to provide instant notification, reducing the Mean Time to Detection (MTTD).
 * **Validation through Chaos:** I didn't assume the monitoring worked; I performed **Failure Injection** (CPU stress and manual shutdowns) to prove the alerting pipeline was functional.
 
+
+
 ## Architecture & Data Flow
 The monitoring ecosystem follows a structured telemetry pipeline:
-
-
 
 1. **Data Ingestion:** The **Azure Monitor Agent (AMA)** collects OS-level performance metrics and system logs from the VM.
 2. **Aggregation:** Data is streamed into the **Log Analytics Workspace (law-secure-web)** for storage and analysis.
 3. **Evaluation:** **Azure Monitor** runs periodic checks against the stored data.
 4. **Notification:** If thresholds are breached (e.g., CPU > 80% or VM Heartbeat = 0), the **Action Group** triggers an email notification.
 
-## Technical Stack
-* **Cloud Provider:** Microsoft Azure
-* **Observability:** Azure Monitor, Log Analytics Workspace (LAW)
-* **Query Language:** Kusto Query Language (KQL)
-* **Automation:** Azure Monitor Alerts, Action Groups (Email)
-* **Testing Tools:** Linux `stress` utility
+## Configuration Audit (Changes Implemented)
 
-## 🛠️ Challenges & Troubleshooting
+| Category | Component | Configuration Details |
+| :--- | :--- | :--- |
+| **Workspace** | `law-secure-web` | Centralized Log Analytics Workspace for telemetry storage. |
+| **Alert 1** | `Alert-High-CPU` | **Severity 2 (Warning)**: Triggers when Average CPU > 80% over 5 mins. |
+| **Alert 2** | `Alert-VM-Availability` | **Severity 0 (Critical)**: Triggers when VM Availability Metric = 0. |
+| **Actions** | `ag-email-alerts` | Automated email routing to the administrator upon alert firing. |
+| **Validation** | **KQL Query** | `search * | summarize count() by $table` verified `Heartbeat` and `Syslog` ingestion. |
+
+##  Challenges & Troubleshooting
 * **The "Silent" Agent:** Initially, the VM wasn't reporting detailed guest-level metrics.
-  * **The Solution:** Identified that basic VM metrics only cover host-level data. I enabled **VM Insights** and confirmed the **Azure Monitor Agent (AMA)** was correctly provisioned and linked to a Data Collection Rule (DCR).
-* **Alert Latency:** During the CPU stress test, the email didn't arrive instantly.
-  * **The Lesson:** Learned the difference between **Evaluation Frequency** (how often Azure looks at the data) and **Lookback Period** (the time window analyzed). I tuned the alert to check every 1 minute to speed up response times for critical failures.
+  * **The Solution:** Identified that basic VM metrics only cover host-level data. I confirmed the **Azure Monitor Agent (AMA)** was correctly provisioned and linked to a **Data Collection Rule (DCR)** to begin streaming guest OS telemetry.
+* **Alert Latency vs. Data Ingestion:** During simulation, I noted a delay between the crash and the notification.
+  * **The Lesson:** Learned that stopping a VM halts the agent immediately, which can affect the final average calculation of a metric before an alert fires. This highlighted the importance of tuning **Evaluation Frequency** vs. **Lookback Periods**.
 
-## Key Skills Demonstrated
-* **Log Analytics & KQL:** Writing custom queries to filter and visualize performance data.
-* **Operational Health:** Defining meaningful thresholds to avoid "Alert Fatigue."
-* **Incident Simulation:** Using stress-testing tools to validate production readiness.
-* **Resource Governance:** Ensuring monitoring costs are managed by targeting only essential telemetry.
+## Step 7: Incident Simulation & Validation
+Testing ensures that the alert logic and notification channels are reliable before a real-world production crisis occurs.
+
+### 1. CPU Stress Test (Performance)
+* **Action:** Connected via **Native SSH** and executed `stress --cpu 2 --timeout 300` to pin CPU at 100%.
+* **Result:** Azure Monitor detected the breach of the 80% threshold.
+* **Outcome:** Successfully received an automated **Severity 2** email alert.
+
+### 2. Availability Test (Uptime)
+* **Action:** Performed a manual shutdown of the VM via the Azure Portal.
+* **Result:** The system detected the loss of the agent heartbeat.
+* **Outcome:** Successfully triggered a **Severity 0 (Critical)** alert in the portal dashboard.
+
 
 
 ## Impact & Lessons Learned
@@ -47,7 +58,3 @@ This project transitioned the environment into a **Production-Ready** state. The
 **Status:** Completed  
 **Role:** Junior Cloud Engineer  
 **Clean-up:** Alerts disabled and logs cleared post-validation to maintain cost hygiene.
-
-##  Future Enhancements
-* **Self-Healing:** Configure an **Azure Automation Runbook** to automatically restart the Nginx service if it stops.
-* **Infrastructure as Code (IaC):** Deploy the entire monitoring stack (LAW, Alerts, DCRs) using Bicep or Terraform.
