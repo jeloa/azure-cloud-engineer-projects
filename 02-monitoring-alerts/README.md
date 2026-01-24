@@ -28,8 +28,7 @@ The monitoring ecosystem follows a structured telemetry pipeline:
 * **Alert Latency vs. Data Ingestion:** During simulation, I noted a delay between the crash and the notification.
   * **The Lesson:** Learned that stopping a VM halts the agent immediately, which can affect the final average calculation of a metric before an alert fires. This highlighted the importance of tuning **Evaluation Frequency** vs. **Lookback Periods**.
 
-## Step 7: Incident Simulation & Validation
-Testing ensures that the alert logic and notification channels are reliable before a real-world production crisis occurs.
+
 
 ### 1. CPU Stress Test (Performance)
 * **Action:** Connected via **Native SSH** and executed `stress --cpu 2 --timeout 300` to pin CPU at 100%.
