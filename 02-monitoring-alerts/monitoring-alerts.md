@@ -51,7 +51,7 @@ Rather than passively viewing metrics, this project simulates **real-world monit
    * Region: Same region as the VM
 3. Review + Create → Create
 
-📸 Screenshot: Log Analytics Workspace overview
+ Screenshot: Log Analytics Workspace overview
 
 ---
 
@@ -66,7 +66,7 @@ Rather than passively viewing metrics, this project simulates **real-world monit
    * Select the existing workspace: `law-secure-web`
 4. Confirm installation of monitoring agent
 
-📸 Screenshot: VM Insights enabled
+ Screenshot: VM Insights enabled
 
 ---
 
@@ -84,7 +84,7 @@ Rather than passively viewing metrics, this project simulates **real-world monit
    * Workspace: `law-secure-web`
 4. Save
 
-📸 Screenshot: Diagnostic settings configuration
+ Screenshot: Diagnostic settings configuration
 
 ---
 
@@ -102,7 +102,7 @@ Perf
 
 3. Confirm results are returned
 
-📸 Screenshot: KQL query results
+ Screenshot: KQL query results
 
 ---
 
@@ -118,7 +118,7 @@ Perf
    * Email: Your email address
 3. Review + Create
 
-📸 Screenshot: Action group configuration
+ Screenshot: Action group configuration
 
 ---
 
@@ -139,7 +139,7 @@ Perf
 5. Severity: 2 (Warning)
 6. Create
 
-📸 Screenshot: CPU alert rule
+ Screenshot: CPU alert rule
 
 ---
 
@@ -151,7 +151,7 @@ Perf
 4. Action Group: `ag-email-alerts`
 5. Severity: 1 (Critical)
 
-📸 Screenshot: Availability alert
+ Screenshot: Availability alert
 
 ---
 
@@ -175,7 +175,7 @@ Confirm alert email is received.
 * Stop the VM from Azure Portal
 * Confirm alert is triggered
 
-📸 Screenshot: Alert email received
+ Screenshot: Alert email received
 
 ---
 
@@ -212,7 +212,7 @@ Confirm alert email is received.
 
 ---
 
-## Resume Bullet (Ready to Use)
+## 
 
 > Implemented Azure Monitor and Log Analytics to collect VM metrics and logs, configured alerts for performance and availability issues, and validated alerting through simulated incidents.
 
