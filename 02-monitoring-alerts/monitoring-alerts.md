@@ -220,7 +220,7 @@ To simulate a critical system failure or an unexpected VM shutdown:
 | **Alert-VM-Availability** | 0 - Critical | Fired | ✅ Yes (Portal/Email) |
 
  **Alert Fired in Portal**
-![Azure Monitor Alert Dashboard](screenshots/Availability-alert.jpg)
+![Azure Monitor Alert Dashboard](screenshots/Azure-Monitor-Alert-Dashboard.jpg)
 
  **Email Notification Received**
 ![VM Availability](screenshots/Availability-alert.jpg)
