@@ -21,15 +21,6 @@ The monitoring ecosystem follows a structured telemetry pipeline:
 3. **Evaluation:** **Azure Monitor** runs periodic checks against the stored data.
 4. **Notification:** If thresholds are breached (e.g., CPU > 80% or VM Heartbeat = 0), the **Action Group** triggers an email notification.
 
-## Configuration Audit (Changes Implemented)
-
-| Category | Component | Configuration Details |
-| :--- | :--- | :--- |
-| **Workspace** | `law-secure-web` | Centralized Log Analytics Workspace for telemetry storage. |
-| **Alert 1** | `Alert-High-CPU` | **Severity 2 (Warning)**: Triggers when Average CPU > 80% over 5 mins. |
-| **Alert 2** | `Alert-VM-Availability` | **Severity 0 (Critical)**: Triggers when VM Availability Metric = 0. |
-| **Actions** | `ag-email-alerts` | Automated email routing to the administrator upon alert firing. |
-| **Validation** | **KQL Query** | `search * | summarize count() by $table` verified `Heartbeat` and `Syslog` ingestion. |
 
 ##  Challenges & Troubleshooting
 * **The "Silent" Agent:** Initially, the VM wasn't reporting detailed guest-level metrics.
