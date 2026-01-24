@@ -40,15 +40,6 @@ The monitoring ecosystem follows a structured telemetry pipeline:
 * **Incident Simulation:** Using stress-testing tools to validate production readiness.
 * **Resource Governance:** Ensuring monitoring costs are managed by targeting only essential telemetry.
 
-##  Project Validation (Screenshots)
-*Log Analytics Workspace Overview*
-![Log Analytics Setup](https://via.placeholder.com/800x400?text=Screenshot+of+Log+Analytics+Workspace)
-
-*KQL Query Results (Perf Logs)*
-![KQL Validation](https://via.placeholder.com/800x400?text=Screenshot+of+KQL+Query+Results)
-
-*Active Alert Notification*
-![Alert Email](https://via.placeholder.com/800x400?text=Screenshot+of+Email+Alert+Notification)
 
 ## Impact & Lessons Learned
 This project transitioned the environment into a **Production-Ready** state. The primary takeaway was that **monitoring is a feedback loop**: a metric without an alert is just noise, and an alert without an action is a distraction. I now have a validated framework for detecting and responding to infrastructure degradation.
