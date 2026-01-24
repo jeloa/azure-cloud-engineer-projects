@@ -117,7 +117,7 @@ This section walks you through the deployment **as if you were on the job**, exp
    * Priority: 110
    * Name: `Allow-SSH-MyIP`
 
- ![Allow SSH](screenshots/Allow-SSH.jpg)
+ ![Allow SSH](screenshots/Allow-SSH2.jpg)
 
 ---
 
