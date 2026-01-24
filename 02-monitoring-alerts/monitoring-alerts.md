@@ -153,7 +153,7 @@ Rather than passively viewing metrics, this project simulates **real-world monit
    * Email: Your email address
 3. Review + Create
 
- Screenshot: Action group configuration
+
 
 ---
 
@@ -174,7 +174,7 @@ Rather than passively viewing metrics, this project simulates **real-world monit
 5. Severity: 2 (Warning)
 6. Create
 
- Screenshot: CPU alert rule
+
 
 ---
 
@@ -186,42 +186,50 @@ Rather than passively viewing metrics, this project simulates **real-world monit
 4. Action Group: `ag-email-alerts`
 5. Severity: 1 (Critical)
 
- Screenshot: Availability alert
 
 ---
 
-### Step 7: Simulate Incidents
+## Step 7: Simulate Incidents
+**Why this matters:** Testing ensures that the alert logic and notification channels are reliable before a real-world production crisis occurs. Verification proves the "MTTD" (Mean Time to Detection) is within acceptable business limits.
 
-**Why this matters:** Testing proves alerts actually work.
+### 1. CPU Stress Test (Performance Monitoring)
+To simulate a high-load scenario where an application might be consuming excessive resources:
 
-#### CPU Stress Test:
+* **Action:** Connected to the VM via **Native SSH** using Windows PowerShell.
+* **Execution:** Installed the `stress` utility and ran a 300-second workload to pin CPU usage at 100%.
+    ```bash
+    sudo apt update && sudo apt install -y stress
+    stress --cpu 2 --timeout 300
+    ```
+* **Threshold:** The alert was configured to trigger when the **Average CPU > 80%** over a 5-minute window.
+* **Outcome:** Successfully received an automated **Severity 2 (Warning)** email notification from Azure Monitor.
 
-SSH into the VM and run:
+### 2. Availability Test (Uptime Monitoring)
+To simulate a critical system failure or an unexpected VM shutdown:
 
-```bash
-sudo apt install -y stress
-stress --cpu 2 --timeout 300
-```
+* **Action:** Manually **Stopped** the `vm-secure-web` instance via the Azure Portal.
+* **Mechanism:** The **Azure Monitor Agent** ceased sending heartbeats, causing the `VM Availability Metric` to drop to **0**.
+* **Outcome:** The alert officially changed to a **Fired** state in the Azure Monitor dashboard with a **Severity 0 (Critical)** rating.
 
-Confirm alert email is received.
+---
 
-#### Availability Test:
+### Final Validation Proof
+| Alert Name | Severity | Status | Notification Confirmed |
+| :--- | :--- | :--- | :--- |
+| **Alert-High-CPU** | 2 - Warning | Fired | ✅ Yes (Email) |
+| **Alert-VM-Availability** | 0 - Critical | Fired | ✅ Yes (Portal/Email) |
 
-* Stop the VM from Azure Portal
-* Confirm alert is triggered
+ **Alert Fired in Portal**
+![Azure Monitor Alert Dashboard](screenshots/Availability-alert.jpg)
 
- Screenshot: Alert email received
+ **Email Notification Received**
+![VM Availability](screenshots/Availability-alert.jpg)
+
+![High CPU Usage](screenshots/CPU-aler-rule.jpg)
+
 
 ---
 
-## Validation Checklist
-
-* Logs visible in Log Analytics
-* KQL queries return data
-* Alerts trigger as expected
-* Notifications received
-
----
 
 ## Cost Awareness
 
