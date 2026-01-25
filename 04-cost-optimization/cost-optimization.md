@@ -49,7 +49,7 @@ This project simulates how engineers identify waste, control spend, and apply op
 3. Open **Cost analysis**
 4. Set scope to your project Resource Group
 
-📸 Screenshot: Cost analysis by resource group
+![Cost Analysis](screenshots/Cost-analysis.jpg)
 
 ---
 
@@ -67,7 +67,7 @@ This project simulates how engineers identify waste, control spend, and apply op
    * Disk storage costs
    * Public IP / network costs
 
-📸 Screenshot: Cost breakdown by resource
+![Cost Breakdown](screenshots/Resource.jpg)
 
 ---
 
