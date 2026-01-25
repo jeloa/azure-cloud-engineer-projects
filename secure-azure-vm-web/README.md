@@ -14,7 +14,7 @@ This project addresses three critical security vulnerabilities:
 ## Architecture & Traffic Flow
 The environment is built inside a dedicated Azure Resource Group using a modular approach:
 * **Internet Traffic:** Users access the web application via the Public IP over Port 80.
-* **Firewall Layer (NSG):** The NSG inspects packets; HTTP is allowed, while SSH is restricted to my Trusted IP (49.149.106.101).
+* **Firewall Layer (NSG):** The NSG inspects packets; HTTP is allowed, while SSH is restricted to my Trusted IP (PUBLIC IP).
 * **Compute Layer:** A hardened Linux VM running Nginx, utilizing a cost-efficient SKU (B1s or equivalent available size like B1ls/B2s).
 
 
