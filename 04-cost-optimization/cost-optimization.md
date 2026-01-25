@@ -82,7 +82,7 @@ This project simulates how engineers identify waste, control spend, and apply op
    * Memory usage (if available)
 3. Resize VM to a smaller SKU if utilization is consistently low
 
-📸 Screenshot: VM size before and after resize
+
 
 ---
 
@@ -95,7 +95,7 @@ This project simulates how engineers identify waste, control spend, and apply op
 3. Set time (e.g., 7:00 PM local time)
 4. Configure notification email
 
-📸 Screenshot: Auto-shutdown configuration
+
 
 ---
 
@@ -109,7 +109,7 @@ Apply the following tags to all project resources:
 * `Project: Azure-Cloud-Portfolio`
 * `Owner: <YourName>`
 
-📸 Screenshot: Resource tags applied
+
 
 ---
 
@@ -125,7 +125,7 @@ Apply the following tags to all project resources:
    * Alert: 80% threshold
 3. Configure email notification
 
-📸 Screenshot: Budget alert configuration
+
 
 ---
 
@@ -148,7 +148,7 @@ Apply the following tags to all project resources:
 
 ---
 
-## Resume Bullet (Ready to Use)
+## Insights
 
 > Analyzed Azure resource costs using Cost Management, implemented VM right-sizing and auto-shutdown policies, applied tagging for governance, and configured budget alerts to control cloud spending.
 
@@ -164,5 +164,5 @@ Apply the following tags to all project resources:
 
 ## Status
 
-🟢 Completed – Cost controls and optimizations implemented
+ Completed – Cost controls and optimizations implemented
 
