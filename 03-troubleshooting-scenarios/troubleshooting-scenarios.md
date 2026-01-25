@@ -88,7 +88,7 @@ The Inbound Security Rule for HTTP (Port 80) was missing from `nsg-secure-web`, 
 * **System Alert:** The OS reported "No space left on device" during write operations.
 * **Storage Status:** CLI check `df -h` showed 99% disk utilization with only 378MB remaining.
 
- ![Disk Usage break](screenshots/disk-usage-99%.jpg)
+ ![Disk Usage break](screenshots/disk-usage-99.jpg)
 
 ### Investigation Steps
 * **Azure Portal:** Monitored **OS Disk Write Bytes/Sec** in the Metrics blade to identify the exact time of the storage spike.
