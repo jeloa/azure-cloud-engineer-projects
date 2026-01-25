@@ -28,11 +28,6 @@ This simulates real on-call and support scenarios where engineers must restore s
 * Network Security Group (NSG)
 * Azure Monitor & Log Analytics
 
-**Scenario Model:**
-
-* Healthy state → Failure introduced → Detection → Diagnosis → Resolution → Validation
-
-![Architecture Diagram](screenshots/architecture-diagram.jpg)
 
 ---
 
