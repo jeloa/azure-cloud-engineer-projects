@@ -32,7 +32,7 @@ This simulates real on-call and support scenarios where engineers must restore s
 
 * Healthy state → Failure introduced → Detection → Diagnosis → Resolution → Validation
 
-*(Insert Troubleshooting Flow Diagram Here)*
+![Architecture Diagram](screenshots/architecture-diagram.jpg)
 
 ---
 
@@ -81,34 +81,36 @@ The Inbound Security Rule for HTTP (Port 80) was missing from `nsg-secure-web`, 
 ## Scenario 2: High Disk Usage Causing Service Failure
 
 ### Problem Introduced
-
-Disk fills up due to large files created intentionally.
+* Simulated a storage failure by creating a large 25GB dummy file using the `fallocate` command.
+* Targeted the root partition (`/dev/root`) to observe system behavior when storage is near 100% capacity.
 
 ### Symptoms
+* **System Alert:** The OS reported "No space left on device" during write operations.
+* **Storage Status:** CLI check `df -h` showed 99% disk utilization with only 378MB remaining.
 
-* Application becomes unresponsive
-* System logs show disk-related errors
+ ![Disk Usage break](screenshots/disk-usage-99%.jpg)
 
 ### Investigation Steps
+* **Azure Portal:** Monitored **OS Disk Write Bytes/Sec** in the Metrics blade to identify the exact time of the storage spike.
 
-* Check VM metrics (Disk Used Percentage)
-* Review system logs via SSH
+
+  * **CLI Analysis:** Connected via SSH and used `df -h` to identify the saturated partition.
+* **File Discovery:** Used `ls -lh /tmp` to find the specific file causing the saturation.
 
 ### Root Cause
-
-Insufficient disk space available for application operations.
+* Insufficient disk space available for application operations and system logging due to a large temporary file (`/tmp/disk_filler.img`).
 
 ### Resolution
+* **Manual Cleanup:** Reclaimed space by deleting the filler file using `sudo rm /tmp/disk_filler.img`.
+* **Preventative Measure:** Real-world resolution would include setting up Azure Monitor Alerts for disk thresholds exceeding 80%.
 
-* Remove unnecessary files
-* (Optional) Resize disk
+ ![Cleared Disk Usage](screenshots/Cleared-Disk-Usage.jpg)
 
 ### Validation
+* **Space Verification:** Confirmed disk usage returned to a baseline of 14% via `df -h`.
+* **Metric Baseline:** Observed the disk write metrics return to idle levels in the Azure Portal.
 
-* Confirm disk usage returns to normal
-* Verify service stability
-
-📸 Screenshot: Disk metrics before and after cleanup
+ ![Storage Spike](screenshots/Storage-Spike.jpg)
 
 ---
 
