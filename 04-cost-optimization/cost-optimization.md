@@ -34,7 +34,6 @@ This project simulates how engineers identify waste, control spend, and apply op
 
 * Resource usage → Metered billing → Cost analysis → Optimization
 
-*(Insert Cost Management Overview Screenshot Here)*
 
 ---
 
