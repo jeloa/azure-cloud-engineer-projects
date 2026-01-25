@@ -212,4 +212,4 @@ sudo systemctl enable azuremonitoragent
 
 ## Status
 
-🟡 In Progress – Troubleshooting scenarios executed
+Completed
