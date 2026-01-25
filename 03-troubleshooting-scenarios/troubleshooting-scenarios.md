@@ -53,35 +53,28 @@ This structured approach mirrors real production incident handling.
 ## Scenario 1: Web Application Unreachable (NSG Misconfiguration)
 
 ### Problem Introduced
-
-Inbound HTTP traffic is blocked due to an incorrect NSG rule.
+Inbound HTTP traffic was blocked by deleting the existing allow rule, simulating a common production misconfiguration where security rules are accidentally removed.
 
 ### Symptoms
-
-* Website fails to load via public IP
-* VM is running and reachable via SSH
+* **Browser Error:** `52.237.81.46` returned `ERR_CONNECTION_TIMED_OUT`.
+* **Resource Status:** Azure Portal confirmed `vm-secure-web` was in a "Running" state.
 
 ### Investigation Steps
-
-* Verify VM status (Running)
-* Review NSG inbound rules
-* Confirm HTTP (port 80) is missing or denied
+* **Verified Connectivity:** Confirmed the VM was responsive via the Azure Portal.
+* **Network Analysis:** Used **Azure Network Watcher: IP Flow Verify**.
+* **Packet Details:** Tested Protocol TCP, Local Port 80, and Remote Port *. The tool confirmed traffic was "Denied" by the NSG.
 
 ### Root Cause
-
-NSG inbound rule for HTTP traffic was removed or incorrectly prioritized.
+The Inbound Security Rule for HTTP (Port 80) was missing from `nsg-secure-web`, causing the default `DenyAllInBound` rule to block all incoming web traffic.
 
 ### Resolution
-
-* Add or correct NSG rule allowing TCP port 80
-* Ensure rule priority allows traffic
+* **Created Rule:** Added a new Inbound Security Rule.
+* **Configuration:** Protocol: TCP, Destination Port: 80, Action: Allow, Priority: 100.
 
 ### Validation
+* **Status:** Website successfully loaded the Nginx "Welcome" page.
+* **Tool Confirmation:** Re-ran IP Flow Verify; result changed to "Allowed."
 
-* Refresh browser
-* Confirm web page loads successfully
-
-📸 Screenshot: NSG rule fix and restored web page
 
 ---
 
