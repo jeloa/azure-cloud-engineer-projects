@@ -116,80 +116,80 @@ The Inbound Security Rule for HTTP (Port 80) was missing from `nsg-secure-web`, 
 
 ## Scenario 3: Access Denied (RBAC Misconfiguration)
 
-### Problem Introduced
+### **Problem Introduced**
+* Simulated a scenario where a team member, **Test User One**, was unable to perform administrative tasks on the production Virtual Machine.
+* Purpose: To demonstrate the impact of **Role-Based Access Control (RBAC)** on resource management and security governance.
 
-User loses access to VM or resource group.
+### **Symptoms**
+* **Authorization Errors:** The user received "Access Denied" or "Authorization Failed" notifications when attempting to trigger a VM restart.
+* **Restricted UI:** Management actions (Start/Stop/Restart) were greyed out or resulted in permission errors in the Azure Portal.
 
-### Symptoms
+### **Investigation Steps**
+* **Check Access:** Utilized the **"Check access"** dashboard in the **Access Control (IAM)** blade of the resource group `rg-secure-vm-web`.
+* **Role Audit:** Reviewed the **Role assignments** tab to verify the specific roles assigned to the user.
+* **Discovery:** Identified that the user was assigned the **Reader** role at the Subscription/Resource Group level.
 
-* Azure Portal shows authorization errors
 
-### Investigation Steps
 
-* Review role assignments at Resource Group and VM level
-* Identify missing or incorrect role
+### **Root Cause**
+* **RBAC Misconfiguration:** The **Reader** role is a non-privileged role that allows for visibility but lacks the "Write" permissions required for the `Microsoft.Compute/virtualMachines/restart/action`. The user was missing the **Virtual Machine Contributor** role.
 
-### Root Cause
+### **Resolution**
+* **Role Elevation:** Corrected the assignment by adding the **Virtual Machine Contributor** role to **Test User One** at the Resource Group scope.
+* **Cleanup:** Removed any redundant or overly restrictive roles that conflicted with the required administrative duties.
 
-RBAC role removed or incorrectly assigned.
 
-### Resolution
 
-* Reassign correct role (e.g., Virtual Machine Contributor)
-
-### Validation
-
-* Confirm access restored
-
-📸 Screenshot: RBAC role correction
+### **Validation**
+* **Permission Confirmation:** Re-ran the **Check access** tool, which confirmed the user now has the effective permissions of a **Virtual Machine Contributor**.
+* **Action Test:** Verified that the user can now successfully perform power management actions on the VM.
 
 ---
 
 ## Scenario 4: Monitoring Data Missing (Agent Failure)
 
-### Problem Introduced
+### **Problem Introduced**
+* Simulated a total monitoring blackout by stopping the **Azure Monitor Agent (AMA)** service on the Linux Virtual Machine.
+* Mimicked a scenario where the monitoring agent crashes or fails to initialize, resulting in a loss of critical telemetry.
 
-Monitoring agent is stopped or uninstalled.
 
-### Symptoms
+### **Symptoms**
+* **Data Gap:** A complete cessation of new entries in Log Analytics tables, specifically `Heartbeat` and `InsightsMetrics`.
+* **Alert Failure:** Proactive alerts stopped triggering due to the lack of incoming performance data.
+* **Portal Silence:** Guest-level metrics for CPU and Memory displayed "No Data" or became stagnant.
 
-* No new data in Log Analytics
-* Alerts stop triggering
+- Observation: You will notice that the "LastCall" time stops updating or no results appear for the current time.
+ ![Last Call)](screenshots/LastCall.jpg)
 
-### Investigation Steps
+### **Investigation Steps**
+* **Extension Audit:** Verified the **Extensions + applications** blade in the Azure Portal; confirmed the `AzureMonitorLinuxAgent` extension was "Succeeded," suggesting a service-level rather than an installation-level issue.
+* **System Check:** Connected via SSH and audited the agent service status:
+  ```bash
+  systemctl status azuremonitoragent
+  ```
+- Discovery: The service was found to be in an inactive (dead) state.
 
-* Check VM extensions
-* Review agent status
+![Inactive(Dead)](screenshots/inactive.jpg)
 
 ### Root Cause
-
-Monitoring agent stopped or misconfigured.
+- The Azure Monitor Agent (AMA) process was stopped or misconfigured, breaking the communication path between the Guest OS and the Log Analytics Workspace.
 
 ### Resolution
-
-* Restart or reinstall monitoring agent
+- Service Recovery: Restored the telemetry pipeline by restarting the agent service:
+```
+sudo systemctl start azuremonitoragent
+```
+- Persistence: Enabled the service to ensure automatic startup during future boot cycles:
+```
+sudo systemctl enable azuremonitoragent
+```
+![Active)](screenshots/active.jpg)
 
 ### Validation
+- Telemetry Resumption: Verified in Log Analytics that Heartbeat records resumed with current timestamps.
+- Metric Flow: Confirmed the Metrics blade resumed displaying live performance data in the Azure Portal.
 
-* Confirm logs and metrics resume
 
-📸 Screenshot: Log Analytics data restored
-
----
-
-## Root Cause Analysis (Sample Format)
-
-**Incident:** Web Application Outage
-
-**Impact:** Web service unavailable to users
-
-**Root Cause:** NSG inbound rule misconfiguration blocking HTTP traffic
-
-**Resolution:** Corrected NSG rule allowing TCP port 80
-
-**Prevention:** Implemented configuration review and monitoring alerts
-
----
 
 ## Key Skills Demonstrated
 
@@ -201,7 +201,7 @@ Monitoring agent stopped or misconfigured.
 
 ---
 
-## Resume Bullet (Ready to Use)
+## Insights
 
 > Diagnosed and resolved multiple Azure infrastructure incidents by analyzing logs, metrics, and configuration errors, performing root cause analysis, and restoring service availability.
 
