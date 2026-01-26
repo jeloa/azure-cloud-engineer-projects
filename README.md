@@ -152,63 +152,7 @@ Analyze spending patterns, implement cost controls, and optimize resource utiliz
 
 ##  Portfolio Architecture
 
-```
-┌─────────────────────────────────────────────────────────────┐
-│                    Internet Users                            │
-└────────────────────────┬────────────────────────────────────┘
-                         │
-                         ▼
-              ┌──────────────────────┐
-              │   Public IP Address   │
-              └──────────┬───────────┘
-                         │
-                         ▼
-              ┌──────────────────────┐
-              │  Network Security     │
-              │  Group (NSG)          │
-              │  - Allow HTTP:80      │
-              │  - Allow SSH:22 (IP)  │
-              └──────────┬───────────┘
-                         │
-                         ▼
-              ┌──────────────────────┐
-              │   Virtual Network     │
-              │   (10.0.0.0/16)       │
-              │                       │
-              │  ┌─────────────────┐  │
-              │  │ Subnet (Web)    │  │
-              │  │ 10.0.1.0/24     │  │
-              │  │                 │  │
-              │  │  ┌───────────┐  │  │
-              │  │  │  Linux VM │  │  │
-              │  │  │  + Nginx  │  │  │
-              │  │  └─────┬─────┘  │  │
-              │  └────────┼─────────┘  │
-              └───────────┼────────────┘
-                          │
-                          ▼
-              ┌──────────────────────┐
-              │  Azure Monitor Agent  │
-              └──────────┬───────────┘
-                         │
-                         ▼
-              ┌──────────────────────┐
-              │ Log Analytics        │
-              │ Workspace            │
-              └──────────┬───────────┘
-                         │
-                         ▼
-              ┌──────────────────────┐
-              │  Azure Monitor       │
-              │  (Alerts & Metrics)  │
-              └──────────┬───────────┘
-                         │
-                         ▼
-              ┌──────────────────────┐
-              │   Action Group       │
-              │   (Email Alerts)     │
-              └──────────────────────┘
-```
+![Project 2 Architecture](images/portfolio-architecture.png)
 
 ---
 
