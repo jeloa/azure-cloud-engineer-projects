@@ -6,7 +6,7 @@ A comprehensive portfolio demonstrating end-to-end Azure cloud infrastructure li
 
 ---
 
-## 📋 Portfolio Overview
+##  Portfolio Overview
 
 This repository contains four interconnected projects that simulate real-world cloud engineering responsibilities. Each project builds upon the previous one, demonstrating a complete infrastructure lifecycle from initial deployment to ongoing operations and optimization.
 
@@ -333,9 +333,9 @@ Analyze spending patterns, implement cost controls, and optimize resource utiliz
 ##  Contact & Feedback
 
 **Jan Feolo V. Abejero**  
-📧 Email: jeloabejero6@gmail.com  
-💼 LinkedIn: [linkedin.com/in/jeloa](www.linkedin.com/in/jelo-abejero-969260344)  
-🐙 GitHub: [github.com/jeloa](https://github.com/jeloa)
+ Email: jeloabejero6@gmail.com  
+ LinkedIn: [linkedin.com/in/jeloa](www.linkedin.com/in/jelo-abejero-969260344)  
+ GitHub: [github.com/jeloa](https://github.com/jeloa)
 
 **Actively seeking Junior Cloud Engineer / Azure Administrator roles**
 
