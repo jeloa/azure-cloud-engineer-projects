@@ -1,9 +1,6 @@
 
 # Azure Cloud Engineer Projects Portfolio
 
-![Azure](https://img.shields.io/badge/Azure-0078D4?style=flat&logo=microsoft-azure&logoColor=white)
-![Linux](https://img.shields.io/badge/Linux-FCC624?style=flat&logo=linux&logoColor=black)
-![Status](https://img.shields.io/badge/Status-Complete-success)
 
 A comprehensive portfolio demonstrating end-to-end Azure cloud infrastructure lifecycle management: from secure deployment through monitoring, troubleshooting, and cost optimization.
 
