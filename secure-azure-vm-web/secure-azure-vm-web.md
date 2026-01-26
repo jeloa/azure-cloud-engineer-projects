@@ -1,6 +1,6 @@
 # Project 1: Secure Azure VM Hosting a Web Application
 
-![Project Badge](https://img.shields.io/badge/Project-1-blue) ![Status](https://img.shields.io/badge/Status-Complete-success) ![Difficulty](https://img.shields.io/badge/Difficulty-Beginner-green) ![Time](https://img.shields.io/badge/Time-2%20hours-orange)
+![Project Badge](https://img.shields.io/badge/Project-1-blue) ![Status](https://img.shields.io/badge/Status-Complete-success) 
 
 ## Overview
 
