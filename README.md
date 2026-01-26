@@ -4,10 +4,6 @@
 
 A comprehensive portfolio demonstrating end-to-end Azure cloud infrastructure lifecycle management: from secure deployment through monitoring, troubleshooting, and cost optimization.
 
-**Author:** Jan Feolo V. Abejero  
-**Portfolio Website:** [github.com/jeloa/azure-cloud-engineer-projects](https://github.com/jeloa/azure-cloud-engineer-projects)  
-**LinkedIn:** [linkedin.com/in/jeloa](https://linkedin.com/in/jeloa)
-
 ---
 
 ## 📋 Portfolio Overview
