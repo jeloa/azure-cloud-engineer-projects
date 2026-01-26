@@ -1,6 +1,6 @@
 # Project 2: Azure Monitoring, Log Analytics & Alerts
 
-![Project Badge](https://img.shields.io/badge/Project-2-blue) ![Status](https://img.shields.io/badge/Status-Complete-success) ![Difficulty](https://img.shields.io/badge/Difficulty-Intermediate-yellow) ![Time](https://img.shields.io/badge/Time-1.5%20hours-orange)
+![Project Badge](https://img.shields.io/badge/Project-2-blue) ![Status](https://img.shields.io/badge/Status-Complete-success) 
 
 ## Overview
 
