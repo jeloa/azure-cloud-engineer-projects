@@ -22,7 +22,7 @@ The environment is intentionally designed to mirror how cloud resources are depl
 
 ## Architecture
 
-![Project 1 Architecture](screenshots/project1-diagram.jpg)
+![Project 1 Architecture](screenshots/project1-architecture.png)
 
 *Complete infrastructure diagram showing security layers, network flow, and component relationships*
 
