@@ -152,7 +152,7 @@ Analyze spending patterns, implement cost controls, and optimize resource utiliz
 
 ##  Portfolio Architecture
 
-![Project 2 Architecture](images/portfolio-architecture.png)
+![Portfolio Architecture](images/portfolio-architecture.png)
 
 ---
 
