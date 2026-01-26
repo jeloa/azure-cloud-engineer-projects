@@ -21,7 +21,7 @@ Cloud engineering is not just about deploying resources—it's about building se
 
 ---
 
-## 🏗️ Projects
+##  Projects
 
 ### [Project 1: Secure Azure VM Web Hosting](./secure-azure-vm-web/)
 **Focus:** Security & Deployment  
@@ -130,7 +130,7 @@ Analyze spending patterns, implement cost controls, and optimize resource utiliz
 
 ---
 
-## 🛠️ Technical Stack
+##  Technical Stack
 
 ### Cloud Platform
 - Microsoft Azure (Compute, Networking, Storage, Monitoring, Cost Management)
@@ -150,7 +150,7 @@ Analyze spending patterns, implement cost controls, and optimize resource utiliz
 
 ---
 
-## 📊 Portfolio Architecture
+##  Portfolio Architecture
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
@@ -212,48 +212,48 @@ Analyze spending patterns, implement cost controls, and optimize resource utiliz
 
 ---
 
-## 🎯 Skills Demonstrated
+##  Skills Demonstrated
 
 ### Cloud Engineering Fundamentals
-✅ Azure Virtual Machine deployment and configuration  
-✅ Virtual Network design and subnet planning  
-✅ Network Security Group rule management  
-✅ Public IP and DNS configuration
+- Azure Virtual Machine deployment and configuration  
+- Virtual Network design and subnet planning  
+- Network Security Group rule management  
+- Public IP and DNS configuration
 
 ### Security & Identity
-✅ Network segmentation and least-privilege access  
-✅ Azure RBAC role assignment and auditing  
-✅ Managed Identity implementation  
-✅ SSH key-based authentication  
-✅ Security rule prioritization
+- Network segmentation and least-privilege access  
+- Azure RBAC role assignment and auditing  
+- Managed Identity implementation  
+- SSH key-based authentication  
+- Security rule prioritization
 
 ### Monitoring & Operations
-✅ Centralized logging with Log Analytics  
-✅ Azure Monitor Agent (AMA) configuration  
-✅ Data Collection Rules (DCR) setup  
-✅ KQL query development for log analysis  
-✅ Metric-based alerting and Action Groups  
-✅ Chaos engineering and alert validation
+- Centralized logging with Log Analytics  
+- Azure Monitor Agent (AMA) configuration  
+- Data Collection Rules (DCR) setup  
+- KQL query development for log analysis  
+- Metric-based alerting and Action Groups  
+- Chaos engineering and alert validation
 
 ### Troubleshooting & Incident Response
-✅ Systematic root cause analysis methodology  
-✅ Network troubleshooting with IP Flow Verify  
-✅ Storage performance investigation  
-✅ RBAC permission debugging  
-✅ Service health monitoring and recovery  
-✅ Professional incident documentation
+- Systematic root cause analysis methodology  
+- Network troubleshooting with IP Flow Verify  
+- Storage performance investigation  
+- RBAC permission debugging  
+- Service health monitoring and recovery  
+- Professional incident documentation
 
 ### Cost Management & Governance
-✅ Azure Cost Management analysis  
-✅ Resource utilization monitoring  
-✅ VM right-sizing decisions  
-✅ Auto-shutdown policy implementation  
-✅ Resource tagging strategies  
-✅ Budget alerts and spend controls
+- Azure Cost Management analysis  
+- Resource utilization monitoring  
+- VM right-sizing decisions  
+- Auto-shutdown policy implementation  
+- Resource tagging strategies  
+- Budget alerts and spend controls
 
 ---
 
-## 🚀 Getting Started
+##  Getting Started
 
 ### Prerequisites
 - Active Azure subscription (free tier acceptable)
@@ -288,7 +288,7 @@ Analyze spending patterns, implement cost controls, and optimize resource utiliz
 
 ---
 
-## 📚 Additional Resources
+##  Additional Resources
 
 ### Official Documentation
 - [Azure Virtual Machines Documentation](https://docs.microsoft.com/azure/virtual-machines/)
@@ -303,7 +303,7 @@ Analyze spending patterns, implement cost controls, and optimize resource utiliz
 
 ---
 
-## 🎓 Lessons Learned
+##  Lessons Learned
 
 ### Security
 > "A 'default' deployment is often an insecure one. Security must be designed in from the start, not bolted on later."
@@ -319,7 +319,7 @@ Analyze spending patterns, implement cost controls, and optimize resource utiliz
 
 ---
 
-## 🔄 Project Lifecycle Summary
+##  Project Lifecycle Summary
 
 | Phase | Project | Focus | Outcome |
 |-------|---------|-------|---------|
@@ -330,28 +330,28 @@ Analyze spending patterns, implement cost controls, and optimize resource utiliz
 
 ---
 
-## 📧 Contact & Feedback
+##  Contact & Feedback
 
 **Jan Feolo V. Abejero**  
-📧 Email: jeloabejero@gmail.com  
-💼 LinkedIn: [linkedin.com/in/jeloa](https://linkedin.com/in/jeloa)  
+📧 Email: jeloabejero6@gmail.com  
+💼 LinkedIn: [linkedin.com/in/jeloa](www.linkedin.com/in/jelo-abejero-969260344)  
 🐙 GitHub: [github.com/jeloa](https://github.com/jeloa)
 
 **Actively seeking Junior Cloud Engineer / Azure Administrator roles**
 
 ---
 
-## 📝 License
+##  License
 
 This project is open source and available for educational purposes. Feel free to use these projects as learning resources or templates for your own Azure infrastructure.
 
 ---
 
-## ⭐ Acknowledgments
+##  Acknowledgments
 
 These projects were developed as part of a structured learning path to demonstrate production-ready cloud engineering skills. Special thanks to the Azure documentation community and cloud engineering best practices that informed these implementations.
 
 ---
 
 **Last Updated:** January 2026  
-**Status:** ✅ All projects complete and validated
+**Status:**  All projects complete and validated
