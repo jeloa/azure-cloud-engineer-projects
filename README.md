@@ -43,7 +43,7 @@ Deploy a production-ready Linux web server with enterprise-grade security contro
 - Eliminated credential exposure using Managed Identity
 - Implemented zero-trust networking principles
 
-[📖 View Full Documentation →](./secure-azure-vm-web/README.md)
+[📖 View Full Documentation →](./secure-azure-vm-web/secure-azure-vm-web.md)
 
 ---
 
@@ -69,7 +69,7 @@ Build a centralized monitoring platform with automated incident detection and no
 - Validated monitoring through controlled failure simulation (stress testing, VM shutdowns)
 - Reduced Mean Time to Detection (MTTD) through proactive alerting
 
-[📖 View Full Documentation →](./02-monitoring-alerts/README.md)
+[📖 View Full Documentation →](./02-monitoring-alerts/monitoring-alerts.md)
 
 ---
 
@@ -100,7 +100,7 @@ Diagnose and resolve four production-simulated infrastructure failures using sys
 - Utilized KQL queries to validate telemetry recovery
 - Documented findings in professional RCA format
 
-[📖 View Full Documentation →](./03-troubleshooting-scenarios/README.md)
+[📖 View Full Documentation →](./03-troubleshooting-scenarios/troubleshooting-scenarios.md)
 
 ---
 
@@ -126,7 +126,7 @@ Analyze spending patterns, implement cost controls, and optimize resource utiliz
 - Applied governance framework with standardized tagging (Environment, Project, Owner)
 - Configured proactive budget alerts at 80% and 100% thresholds
 
-[📖 View Full Documentation →](./04-cost-optimization/README.md)
+[📖 View Full Documentation →](./04-cost-optimization/cost-optimization.md)
 
 ---
 
@@ -207,7 +207,6 @@ Analyze spending patterns, implement cost controls, and optimize resource utiliz
 
 ### Recommended Learning Path
 
-**For Beginners:**
 1. Start with Project 1 (Security & Deployment)
 2. Move to Project 2 (Monitoring)
 3. Complete Project 4 (Cost Optimization)
