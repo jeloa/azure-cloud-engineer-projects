@@ -341,10 +341,10 @@ Rather than passively viewing metrics, this project simulates **real-world monit
 ![High CPU Usage Alert](screenshots/CPU-aler-rule.jpg)
 
 **What this proves:** Your entire monitoring stack is functional:
-1. ✅ Agent collecting data
-2. ✅ Data flowing to workspace
-3. ✅ Alert rules evaluating correctly
-4. ✅ Action Groups delivering notifications
+1.  Agent collecting data
+2.  Data flowing to workspace
+3.  Alert rules evaluating correctly
+4.  Action Groups delivering notifications
 
 ---
 
@@ -368,9 +368,9 @@ Rather than passively viewing metrics, this project simulates **real-world monit
 ## Cleanup (Optional)
 
 **If you want to keep monitoring for future projects:**
-* ✅ Keep Log Analytics Workspace (reuse across projects)
-* ✅ Keep Azure Monitor Agent installed
-* ⚠️ Disable alert rules to prevent unnecessary emails
+*  Keep Log Analytics Workspace (reuse across projects)
+*  Keep Azure Monitor Agent installed
+*  Disable alert rules to prevent unnecessary emails
 
 **If you're done with the entire portfolio:**
 ```bash
