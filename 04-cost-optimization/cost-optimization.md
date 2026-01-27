@@ -23,7 +23,7 @@ The goal is to demonstrate that cloud resources are not only deployed and operat
 
 ## Architecture
 
-![Project 4 Architecture](../images/project4-architecture.png)
+![Project 4 Architecture](screenshots/project4-architecture.png)
 
 *Complete cost flow cycle showing resource usage, billing, analysis, optimization, and governance controls*
 
