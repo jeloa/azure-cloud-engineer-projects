@@ -387,21 +387,21 @@ az group delete --name rg-secure-vm-web --yes --no-wait
 
 ## Key Skills Demonstrated
 
-✅ Azure Monitor configuration and alert rule creation  
-✅ Log Analytics Workspace setup and KQL query development  
-✅ Data Collection Rules (modern diagnostic approach)  
-✅ Azure Monitor Agent deployment and management  
-✅ Alert threshold tuning and severity classification  
-✅ Action Group notification channel configuration  
-✅ Chaos engineering and alert validation  
-✅ Incident simulation and MTTD measurement  
-✅ Cost-aware monitoring design  
+- Azure Monitor configuration and alert rule creation  
+- Log Analytics Workspace setup and KQL query development  
+- Data Collection Rules (modern diagnostic approach)  
+- Azure Monitor Agent deployment and management  
+- Alert threshold tuning and severity classification  
+- Action Group notification channel configuration  
+- Chaos engineering and alert validation  
+- Incident simulation and MTTD measurement  
+- Cost-aware monitoring design  
 
 ---
 
 ## Common Mistakes & How to Avoid Them
 
-| ❌ Common Mistake | ✅ How to Avoid |
+|  Common Mistake |  How to Avoid |
 |------------------|----------------|
 | Not validating data flow before creating alerts | Always run KQL queries first |
 | Alert thresholds too sensitive (alert fatigue) | Start conservative (80%+), tune based on baseline |
@@ -431,12 +431,12 @@ az group delete --name rg-secure-vm-web --yes --no-wait
 ## Next Steps
 
 **Enhance this project:**
-- [ ] Add custom KQL queries for common troubleshooting scenarios
-- [ ] Implement log-based alerts (e.g., "alert if 5+ failed SSH attempts in 10 minutes")
-- [ ] Create Azure Workbook dashboards for visual monitoring
-- [ ] Configure dynamic metric thresholds (ML-based)
-- [ ] Add SMS or webhook notifications to Action Group
-- [ ] Implement alert suppression rules (prevent duplicate alerts)
+-  Add custom KQL queries for common troubleshooting scenarios
+-  Implement log-based alerts (e.g., "alert if 5+ failed SSH attempts in 10 minutes")
+-  Create Azure Workbook dashboards for visual monitoring
+-  Configure dynamic metric thresholds (ML-based)
+-  Add SMS or webhook notifications to Action Group
+-  Implement alert suppression rules (prevent duplicate alerts)
 
 **Continue learning:**
 - **← Previous:** [Project 1: Secure VM Deployment](../secure-azure-vm-web/README.md) - The infrastructure being monitored
@@ -474,4 +474,4 @@ az group delete --name rg-secure-vm-web --yes --no-wait
 
 ## Status
 
-✅ **Completed** | Last Updated: January 2026
+ **Completed** | Last Updated: January 2026
