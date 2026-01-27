@@ -1,6 +1,7 @@
 # Project 4: Azure Cost Management & Optimization
 
-![Project Badge](https://img.shields.io/badge/Project-4-blue) ![Status](https://img.shields.io/badge/Status-Complete-success) 
+![Project Badge](https://img.shields.io/badge/Project-4-blue) ![Status](https://img.shields.io/badge/Status-Complete-success)
+## Overview
 
 This project focuses on **cost visibility, control, and optimization** — a critical but often overlooked responsibility of Junior Cloud Engineers.
 
@@ -60,8 +61,8 @@ The goal is to demonstrate that cloud resources are not only deployed and operat
 
 | Action | Impact | Monthly Savings | Implementation |
 |--------|--------|-----------------|----------------|
-| **VM Right-Sizing** | Reduced SKU from B2s to B1s | ~$20-30 (40%) | Azure Portal resize |
-| **Auto-Shutdown** | 8 hours/day downtime | ~$10-15 (30%) | VM auto-shutdown policy |
+| **VM Right-Sizing** | Reduced SKU from D2s v3 to B1s | ~$40-55 (70%+) | Azure Portal resize |
+| **Auto-Shutdown** | 8 hours/day downtime | ~$5-8 (25-30%) | VM auto-shutdown policy |
 | **Resource Tagging** | Cost attribution enabled | Governance | Applied tags to all resources |
 | **Budget Alerts** | Proactive spend control | Prevention | $5 budget with 80%/100% alerts |
 
@@ -69,11 +70,11 @@ The goal is to demonstrate that cloud resources are not only deployed and operat
 
 | Resource | SKU/Type | Hours/Month | Est. Monthly Cost |
 |----------|----------|-------------|-------------------|
-| VM (B2s) | 2 vCPU, 4GB RAM | 720 (24/7) | ~$50 |
+| VM (D2s v3) | 2 vCPU, 8GB RAM | 720 (24/7) | ~$70 |
 | OS Disk | Standard HDD 30GB | 720 | ~$2 |
 | Public IP | Static | 720 | ~$3 |
 | Network Egress | First 100GB free | Variable | ~$0-2 |
-| **Total** | | | **~$55-57/month** |
+| **Total** | | | **~$75-77/month** |
 
 ### Cost After Optimization:
 
@@ -85,7 +86,7 @@ The goal is to demonstrate that cloud resources are not only deployed and operat
 | Network Egress | First 100GB free | Variable | ~$0-2 |
 | **Total** | | | **~$20-22/month** |
 
-**Total Savings: ~$35/month (63% reduction)**
+**Total Savings: ~$55/month (73% reduction)**
 
 ### Resource Tags Applied:
 
@@ -163,32 +164,47 @@ The goal is to demonstrate that cloud resources are not only deployed and operat
 **Analysis:**
 - **Finding:** Average CPU: 4.5% over 72 hours
 - **Peak CPU:** Never exceeded 15% (during stress test)
+- **Current SKU:** Standard D2s v3 (2 vCPU, 8GB RAM) - General purpose VM
 - **Conclusion:** VM is massively underutilized (95.5% idle)
 
-4. **Decision:** Downsize from B2s (2 vCPU, 4GB RAM) to B1s (1 vCPU, 1GB RAM)
+4. **Decision:** Downsize from D2s v3 (2 vCPU, 8GB RAM) to B1s (1 vCPU, 1GB RAM)
+
+**Why This Makes Sense:**
+- D-series VMs are designed for production workloads needing consistent performance
+- B-series VMs are burstable, perfect for dev/test and low-traffic web servers
+- Your workload (static Nginx page) doesn't need the D-series premium pricing
 
 **Implementation:**
 1. Go to VM → **Size**
 2. Click **Resize**
-3. Select **B1s** (or available alternative if B1s unavailable in region)
-4. Click **Resize** (causes brief restart)
+3. **Important:** D-series to B-series requires VM deallocation (stop VM first)
+4. Select **B1s** (or B1ls if available for even lower cost)
+5. Click **Resize** (causes brief downtime for size change)
 
-**What just happened:** You matched VM capacity to actual demand. The workload (Nginx serving static page) doesn't need 2 CPUs—1 CPU is sufficient.
+**What just happened:** You switched from a general-purpose production VM to a burstable dev/test VM, matching capacity to actual demand.
 
 **Cost Impact:**
-- **Before:** B2s = ~$50/month (24/7)
+- **Before:** D2s v3 = ~$70/month (24/7)
 - **After:** B1s = ~$25/month (24/7)
-- **Savings:** ~$25/month (50% reduction on compute)
+- **Savings:** ~$45/month (64% reduction on compute)
 
 **Right-Sizing Methodology:**
 - Monitor for 7+ days to capture usage patterns
 - Peak usage should target 60-70% CPU (not 100%, leave headroom)
 - Don't resize based on a single spike
 - Always test after resizing to ensure performance acceptable
+- **D-series to B-series:** Requires deallocation (stop VM, resize, start VM)
+
+**Why B-series for This Workload:**
+- Static website with minimal traffic
+- Nginx serving lightweight pages
+- No database or compute-intensive operations
+- B-series burstable credits perfect for intermittent usage
+- If traffic spikes, B-series can burst to 100% CPU using accrued credits
 
 **Regional SKU Availability Note:** If B1s unavailable, alternatives:
 - B1ls (~$4/month, ultra-low-cost burstable)
-- B2s (current size, no change)
+- B1ms (~$18/month, more memory)
 - Check: `az vm list-skus --location <region> --size Standard_B`
 
 ---
@@ -325,27 +341,27 @@ Create policy: "All resources must have Owner and Project tags" → Prevent unta
 ## Validation Checklist
 
 ### Cost Analysis Validated:
-- [x] Cost data visible by resource type (VM, Disk, Network)
-- [x] Cost breakdown by service name
-- [x] Historical trend analyzed (7+ days)
-- [x] Top cost drivers identified
+-  Cost data visible by resource type (VM, Disk, Network)
+-  Cost breakdown by service name
+-  Historical trend analyzed (7+ days)
+-  Top cost drivers identified
 
 ### Optimization Implemented:
-- [x] VM utilization reviewed (CPU metrics from Project 2)
-- [x] VM right-sized (B2s → B1s or equivalent)
-- [x] Auto-shutdown enabled (7 PM daily)
-- [x] Shutdown notification configured
+-  VM utilization reviewed (CPU metrics from Project 2)
+-  VM right-sized (B2s → B1s or equivalent)
+-  Auto-shutdown enabled (7 PM daily)
+-  Shutdown notification configured
 
 ### Governance Applied:
-- [x] Tags applied to all resources (Environment, Project, Owner, CostCenter)
-- [x] Tags visible in Cost Management filters
-- [x] Tag inheritance verified on child resources
+-  Tags applied to all resources (Environment, Project, Owner, CostCenter)
+-  Tags visible in Cost Management filters
+-  Tag inheritance verified on child resources
 
 ### Budget Controls:
-- [x] Budget created at Resource Group scope
-- [x] Alert configured at 80% threshold
-- [x] Alert configured at 100% threshold
-- [x] Email notification tested
+-  Budget created at Resource Group scope
+-  Alert configured at 80% threshold
+-  Alert configured at 100% threshold
+-  Email notification tested
 
 ---
 
@@ -355,20 +371,20 @@ Create policy: "All resources must have Owner and Project tags" → Prevent unta
 
 | Optimization | Before | After | Savings |
 |--------------|--------|-------|---------|
-| **VM SKU** | B2s (2 vCPU, 4GB) | B1s (1 vCPU, 1GB) | ~50% compute cost |
+| **VM SKU** | D2s v3 (2 vCPU, 8GB) | B1s (1 vCPU, 1GB) | ~65% compute cost |
 | **Operating Hours** | 720h/month (24/7) | 480h/month (16h/day) | ~33% compute cost |
-| **Combined Effect** | ~$50/month | ~$17/month | **~$33/month (66%)** |
+| **Combined Effect** | ~$70/month | ~$17/month | **~$53/month (76%)** |
 | **Governance** | No tags | 4 tags applied | Cost attribution enabled |
 | **Monitoring** | No budget | $5 budget + alerts | Proactive control |
 
 ### Total Monthly Cost:
 
 **Before Optimization:**
-- VM (B2s, 24/7): $50
+- VM (D2s v3, 24/7): $70
 - Disk: $2
 - Public IP: $3
 - Network: $1
-- **Total: ~$56/month**
+- **Total: ~$76/month**
 
 **After Optimization:**
 - VM (B1s, 16h/day): $17
@@ -377,28 +393,28 @@ Create policy: "All resources must have Owner and Project tags" → Prevent unta
 - Network: $1
 - **Total: ~$23/month**
 
-**Total Savings: ~$33/month (59% reduction)**  
-**Annual Savings: ~$396/year**
+**Total Savings: ~$53/month (70% reduction)**  
+**Annual Savings: ~$636/year**
 
 ---
 
 ## Key Skills Demonstrated
 
-✅ **Azure Cost Management** analysis and reporting  
-✅ **Resource utilization** monitoring and analysis  
-✅ **VM right-sizing** decisions based on performance data  
-✅ **Auto-shutdown** policy configuration  
-✅ **Resource tagging** strategies for governance  
-✅ **Budget management** and alert configuration  
-✅ **FinOps principles** applied to cloud infrastructure  
-✅ **Cost-aware engineering** mindset  
-✅ **Business-aligned** decision making  
+- **Azure Cost Management** analysis and reporting  
+- **Resource utilization** monitoring and analysis  
+- **VM right-sizing** decisions based on performance data  
+- **Auto-shutdown** policy configuration  
+- **Resource tagging** strategies for governance  
+- **Budget management** and alert configuration  
+- **FinOps principles** applied to cloud infrastructure  
+- **Cost-aware engineering** mindset  
+- **Business-aligned** decision making  
 
 ---
 
 ## Common Mistakes & How to Avoid Them
 
-| ❌ Common Mistake | ✅ How to Avoid |
+|  Common Mistake |  How to Avoid |
 |------------------|----------------|
 | Right-sizing based on single data point | Monitor 7+ days for representative baseline |
 | Auto-shutdown on production workloads | Only apply to dev/test environments |
@@ -412,7 +428,7 @@ Create policy: "All resources must have Owner and Project tags" → Prevent unta
 
 ## Insights
 
-> Analyzed Azure resource costs using Cost Management, implemented VM right-sizing (4.5% CPU utilization → B1s SKU) and auto-shutdown policies (16h/day schedule), applied standardized tagging for governance, and configured proactive budget alerts to control cloud spending. Achieved 59% cost reduction while maintaining service quality.
+> Analyzed Azure resource costs using Cost Management, implemented VM right-sizing (Standard D2s v3 → B1s, justified by 4.5% CPU utilization) and auto-shutdown policies (16h/day schedule), applied standardized tagging for governance, and configured proactive budget alerts to control cloud spending. Achieved 70% cost reduction (~$53/month savings) while maintaining service quality.
 
 ---
 
@@ -420,7 +436,7 @@ Create policy: "All resources must have Owner and Project tags" → Prevent unta
 
 * **Cost visibility is essential for sustainable cloud operations**: Without Cost Management, you're flying blind. The first step to optimization is understanding where money goes.
 
-* **Small configuration changes can significantly reduce spend**: Auto-shutdown (5-minute task) saves 33% monthly. Right-sizing (10-minute task) saves 50%. Combined: 66% reduction for 15 minutes of work.
+* **Small configuration changes can significantly reduce spend**: Auto-shutdown (5-minute task) saves 33% monthly. Right-sizing from D-series to B-series (10-minute task) saves 65%+. Combined: 76% reduction for 15 minutes of work.
 
 * **Engineers share responsibility for cloud costs**: Cost optimization isn't just for finance teams. Engineers make decisions that directly impact spending (SKU selection, shutdown policies, resource lifecycle).
 
@@ -442,16 +458,16 @@ This project demonstrates **Level 1-2** FinOps maturity:
 - No optimization practices
 
 **Level 2 - Proactive (After Project):**
-- ✅ Cost visibility via Cost Management
-- ✅ Basic optimization (right-sizing, auto-shutdown)
-- ✅ Governance (tagging, budgets)
-- ✅ Accountability culture
+-  Cost visibility via Cost Management
+-  Basic optimization (right-sizing, auto-shutdown)
+-  Governance (tagging, budgets)
+-  Accountability culture
 
 **Level 3 - Advanced (Future State):**
-- [ ] Reserved Instances / Savings Plans
-- [ ] Automated optimization (auto-scaling)
-- [ ] Showback/Chargeback to departments
-- [ ] FinOps team with dedicated tools
+-  Reserved Instances / Savings Plans
+-  Automated optimization (auto-scaling)
+-  Showback/Chargeback to departments
+-  FinOps team with dedicated tools
 
 **Next Steps Toward Level 3:**
 - Implement Azure Advisor recommendations automatically
@@ -493,13 +509,13 @@ This project demonstrates **Level 1-2** FinOps maturity:
 ## Next Steps
 
 **Enhance this project:**
-- [ ] Implement Azure Reservations for 1-year commitment (up to 72% discount)
-- [ ] Configure Azure Advisor recommendations automation
-- [ ] Create cost dashboard with Power BI or Azure Workbooks
-- [ ] Set up monthly cost review cadence
-- [ ] Implement tagging policy enforcement
-- [ ] Configure auto-start along with auto-shutdown
-- [ ] Explore Azure Hybrid Benefit for Windows VMs (if applicable)
+-  Implement Azure Reservations for 1-year commitment (up to 72% discount)
+-  Configure Azure Advisor recommendations automation
+-  Create cost dashboard with Power BI or Azure Workbooks
+-  Set up monthly cost review cadence
+-  Implement tagging policy enforcement
+-  Configure auto-start along with auto-shutdown
+-  Explore Azure Hybrid Benefit for Windows VMs (if applicable)
 
 **Continue learning:**
 - **← Previous:** [Project 3: Troubleshooting Scenarios](../03-troubleshooting-scenarios/README.md)
@@ -532,11 +548,11 @@ This project demonstrates **Level 1-2** FinOps maturity:
 
 ---
 
-## 🔗 Portfolio Navigation
+##  Portfolio Navigation
 
 - **← Previous:** [Project 3: Troubleshooting Scenarios](../03-troubleshooting-scenarios/README.md)
 - **↑ Main Portfolio:** [README](../README.md)
-- **🎉 Portfolio Complete!** Review all 4 projects:
+- ** Portfolio Complete!** Review all 4 projects:
   - [Project 1: Secure VM Deployment](../secure-azure-vm-web/README.md)
   - [Project 2: Monitoring & Alerts](../02-monitoring-alerts/README.md)
   - [Project 3: Troubleshooting](../03-troubleshooting-scenarios/README.md)
@@ -546,7 +562,7 @@ This project demonstrates **Level 1-2** FinOps maturity:
 
 ## Status
 
-✅ **Completed** | Last Updated: January 2026  
-💰 **Cost Optimized**: 59% monthly savings achieved  
-🏷️ **Governance Enabled**: Resource tagging implemented  
-🚨 **Budget Monitoring**: Proactive alerts configured
+ **Completed** | Last Updated: January 2026  
+ **Cost Optimized**: 70% monthly savings achieved  
+ **Governance Enabled**: Resource tagging implemented  
+ **Budget Monitoring**: Proactive alerts configured
