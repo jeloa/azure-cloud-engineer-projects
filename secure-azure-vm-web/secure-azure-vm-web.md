@@ -283,17 +283,17 @@ You should see the Nginx welcome page:
 
 ## Validation & Testing
 
-### ✅ Functional Tests:
-- [ ] HTTP access works from any browser (`http://<VM-PUBLIC-IP>`)
-- [ ] SSH access works from your allowed IP
-- [ ] SSH access **fails** from unauthorized IP (test with phone hotspot)
-- [ ] Nginx service is active (`systemctl status nginx`)
-- [ ] Managed Identity shows "Enabled" in Azure Portal
+###  Functional Tests:
+-  HTTP access works from any browser (`http://<VM-PUBLIC-IP>`)
+-  SSH access works from your allowed IP
+-  SSH access **fails** from unauthorized IP (test with phone hotspot)
+-  Nginx service is active (`systemctl status nginx`)
+-  Managed Identity shows "Enabled" in Azure Portal
 
-### 🔒 Security Tests:
-- [ ] Port scan shows only 22 and 80 open (use `nmap` or online tool)
-- [ ] Cannot SSH using password authentication
-- [ ] VM cannot be accessed via RDP (port 3389 should be closed)
+###  Security Tests:
+-  Port scan shows only 22 and 80 open (use `nmap` or online tool)
+-  Cannot SSH using password authentication
+-  VM cannot be accessed via RDP (port 3389 should be closed)
 
 ---
 
@@ -337,20 +337,20 @@ az group delete --name rg-secure-vm-web --yes --no-wait
 
 ## Key Skills Demonstrated
 
-✅ Azure Virtual Machine deployment and configuration  
-✅ Virtual Network design and subnet planning  
-✅ Network Security Group rule management with priority-based filtering  
-✅ Secure remote access via SSH key authentication  
-✅ Managed Identity implementation for credential-free operations  
-✅ Cloud security best practices (least privilege, defense in depth)  
-✅ Linux system administration (package management, service control)  
-✅ Cost-aware resource provisioning  
+- Azure Virtual Machine deployment and configuration  
+- Virtual Network design and subnet planning  
+- Network Security Group rule management with priority-based filtering  
+- Secure remote access via SSH key authentication  
+- Managed Identity implementation for credential-free operations  
+- Cloud security best practices (least privilege, defense in depth)  
+- Linux system administration (package management, service control)  
+- Cost-aware resource provisioning  
 
 ---
 
 ## Common Mistakes & How to Avoid Them
 
-| ❌ Common Mistake | ✅ How to Avoid |
+|  Common Mistake |  How to Avoid |
 |------------------|----------------|
 | SSH open to 0.0.0.0/0 | Always restrict to specific IP |
 | Using password auth | Use SSH keys only |
@@ -379,11 +379,11 @@ az group delete --name rg-secure-vm-web --yes --no-wait
 ## Next Steps
 
 **Enhance this project:**
-- [ ] Implement HTTPS with Let's Encrypt SSL certificate
-- [ ] Add custom domain with Azure DNS
-- [ ] Configure Azure Backup for disaster recovery
-- [ ] Implement Azure Monitor alerts for VM availability
-- [ ] Deploy behind Azure Application Gateway for load balancing
+-  Implement HTTPS with Let's Encrypt SSL certificate
+-  Add custom domain with Azure DNS
+-  Configure Azure Backup for disaster recovery
+-  Implement Azure Monitor alerts for VM availability
+-  Deploy behind Azure Application Gateway for load balancing
 
 **Continue learning:**
 - **→ Project 2:** [Monitoring, Logging & Incident Response](../02-monitoring-alerts/README.md) - Build observability for this infrastructure
@@ -409,7 +409,7 @@ az group delete --name rg-secure-vm-web --yes --no-wait
 
 ---
 
-## 🔗 Portfolio Navigation
+##  Portfolio Navigation
 
 - **← Back:** [Main Portfolio](../README.md)
 - **→ Next:** [Project 2: Monitoring & Alerts](../02-monitoring-alerts/README.md)
@@ -418,4 +418,4 @@ az group delete --name rg-secure-vm-web --yes --no-wait
 
 ## Status
 
-✅ **Completed** | Last Updated: January 2026
+ **Completed** | Last Updated: January 2026
