@@ -220,8 +220,8 @@ Analyze spending patterns, implement cost controls, and optimize resource utiliz
 ### Cost Considerations
 
 **Estimated Monthly Costs (if left running 24/7):**
-- Project 1-3: ~$10-15/month (B1s VM + associated resources)
-- Project 4 optimizations reduce costs by 50%+
+- Project 1-3: ~$70/month (D2s v3 VM + associated resources)
+- Project 4 optimizations reduce costs by 70%+
 
 **Cost Mitigation Strategies:**
 - Use Azure Free Tier credits ($200 for 30 days)
