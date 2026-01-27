@@ -443,17 +443,17 @@ Heartbeat
 
 ## Key Skills Demonstrated
 
-✅ **Systematic incident response** using 7-step methodology  
-✅ **Root cause analysis (RCA)** with structured investigation  
-✅ **Azure Network troubleshooting** (NSG, IP Flow Verify)  
-✅ **Storage performance analysis** (disk metrics, CLI diagnostics)  
-✅ **RBAC debugging** (IAM, Check Access, role assignments)  
-✅ **Monitoring agent management** (systemd, service troubleshooting)  
-✅ **Linux system administration** (df, ls, systemctl, journalctl)  
-✅ **Azure Portal diagnostics** (Metrics, Extensions, Network Watcher)  
-✅ **Log Analytics (KQL)** query development  
-✅ **Service restoration** with validation  
-✅ **Professional incident documentation**  
+- **Systematic incident response** using 7-step methodology  
+- **Root cause analysis (RCA)** with structured investigation  
+- **Azure Network troubleshooting** (NSG, IP Flow Verify)  
+- **Storage performance analysis** (disk metrics, CLI diagnostics)  
+- **RBAC debugging** (IAM, Check Access, role assignments)  
+- **Monitoring agent management** (systemd, service troubleshooting)  
+- **Linux system administration** (df, ls, systemctl, journalctl)  
+- **Azure Portal diagnostics** (Metrics, Extensions, Network Watcher)  
+- **Log Analytics (KQL)** query development  
+- **Service restoration** with validation  
+- **Professional incident documentation**  
 
 ---
 
@@ -481,7 +481,7 @@ Heartbeat
 
 ## Common Mistakes & How to Avoid Them
 
-| ❌ Common Mistake | ✅ How to Avoid |
+|  Common Mistake |  How to Avoid |
 |------------------|----------------|
 | Panic and restart VM immediately | Follow systematic troubleshooting (saves time) |
 | Check only one layer (e.g., only app, not network) | Isolate component systematically (network → compute → app) |
@@ -533,11 +533,11 @@ Heartbeat
 ## Next Steps
 
 **Enhance this project:**
-- [ ] Create runbooks for common failure scenarios
-- [ ] Automate incident detection with Azure Automation
-- [ ] Build custom dashboards for troubleshooting workflows
-- [ ] Practice chaos engineering with random failures
-- [ ] Document MTTR for each scenario type
+-  Create runbooks for common failure scenarios
+-  Automate incident detection with Azure Automation
+-  Build custom dashboards for troubleshooting workflows
+-  Practice chaos engineering with random failures
+-  Document MTTR for each scenario type
 
 **Continue learning:**
 - **← Previous:** [Project 2: Monitoring & Alerts](../02-monitoring-alerts/README.md) - The monitoring system that detects these failures
@@ -566,7 +566,7 @@ Heartbeat
 
 ---
 
-## 🔗 Portfolio Navigation
+##  Portfolio Navigation
 
 - **← Previous:** [Project 2: Monitoring & Alerts](../02-monitoring-alerts/README.md)
 - **→ Next:** [Project 4: Cost Optimization](../04-cost-optimization/README.md)
@@ -576,4 +576,4 @@ Heartbeat
 
 ## Status
 
-✅ **Completed** | Last Updated: January 2026
+ **Completed** | Last Updated: January 2026
