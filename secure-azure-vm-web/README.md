@@ -39,3 +39,7 @@ The environment is built inside a dedicated Azure Resource Group using a modular
 
 ---
 
+## Impact & Lessons Learned
+This project serves as a template for a **production-ready landing zone**. It highlights the balance between accessibility (keeping the site live) and security (keeping the server invisible to attackers).
+
+---
