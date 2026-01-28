@@ -41,10 +41,3 @@ The project follows a circular FinOps lifecycle:
 ## Impact & Lessons Learned
 This project highlights the **Principle of Frugality**. By resizing an underutilized VM and enabling auto-shutdown, I demonstrated how to reduce a project's burn rate by over **50%** without affecting performance. 
 
-* **Status:** Completed
-* **Role:** Junior Cloud Engineer
-* **Clean-up:** Set a strict $5.00 monthly budget alert and deleted resources after final validation to maintain cost hygiene.
-
-## Future Enhancements
-* **Azure Policy:** Implement a policy to "Inherit tags from Resource Group" to automate governance.
-* **Automated Remediation:** Use **Azure Logic Apps** to automatically shut down all "Dev" tagged resources if a hard budget limit is hit.
