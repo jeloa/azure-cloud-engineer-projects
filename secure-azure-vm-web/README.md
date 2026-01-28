@@ -36,14 +36,9 @@ The environment is built inside a dedicated Azure Resource Group using a modular
 * **Linux Administration:** Remote configuration and Nginx deployment via secure shell.
 * **Governance:** Using standardized naming conventions (e.g., `rg-`, `vnet-`, `nsg-`).
 
-## Impact & Lessons Learned
+## Impact 
 This project serves as a template for a **production-ready landing zone**. It highlights the balance between accessibility (keeping the site live) and security (keeping the server invisible to attackers). 
 
-**Status:** Completed  
-**Role:** Junior Cloud Engineer  
-**Clean-up:** All resources deleted post-validation to maintain cost hygiene.
 
 ---
-###  Future Enhancements
-* **Infrastructure as Code (IaC):** Automate this entire deployment using Terraform or Azure Bicep.
-* **SSL/TLS Encryption:** Implement Certbot/Let's Encrypt to upgrade from HTTP to HTTPS.
+
