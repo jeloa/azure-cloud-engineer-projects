@@ -1,6 +1,5 @@
 # Project 2: Azure Monitoring, Log Analytics & Alerts
 
-![Project Badge](https://img.shields.io/badge/Project-2-blue) ![Status](https://img.shields.io/badge/Status-Complete-success) 
 
 ## Overview
 
@@ -438,40 +437,9 @@ az group delete --name rg-secure-vm-web --yes --no-wait
 -  Add SMS or webhook notifications to Action Group
 -  Implement alert suppression rules (prevent duplicate alerts)
 
-**Continue learning:**
-- **← Previous:** [Project 1: Secure VM Deployment](../secure-azure-vm-web/README.md) - The infrastructure being monitored
-- **→ Next:** [Project 3: Troubleshooting Scenarios](../03-troubleshooting-scenarios/README.md) - Use these monitoring tools for incident response
-- **→ Related:** [Project 4: Cost Optimization](../04-cost-optimization/README.md) - Optimize monitoring costs
-
----
-
-## Additional Resources
-
-### Azure Documentation:
-- [Azure Monitor Overview](https://docs.microsoft.com/azure/azure-monitor/)
-- [Log Analytics Query Language (KQL)](https://docs.microsoft.com/azure/data-explorer/kusto/query/)
-- [Data Collection Rules](https://docs.microsoft.com/azure/azure-monitor/agents/data-collection-rule-overview)
-- [Azure Monitor Agent](https://docs.microsoft.com/azure/azure-monitor/agents/azure-monitor-agent-overview)
-
-### Best Practices:
-- [Azure Monitor Best Practices](https://docs.microsoft.com/azure/azure-monitor/best-practices)
-- [Alert Management Best Practices](https://docs.microsoft.com/azure/azure-monitor/alerts/alerts-best-practices)
-- [KQL Best Practices](https://docs.microsoft.com/azure/data-explorer/kusto/query/best-practices)
-
-### Troubleshooting:
-- [Azure Monitor Agent Troubleshooting](https://docs.microsoft.com/azure/azure-monitor/agents/azure-monitor-agent-troubleshoot)
-- [Log Analytics Query Errors](https://docs.microsoft.com/azure/azure-monitor/logs/query-optimization)
-
----
-
-## 🔗 Portfolio Navigation
-
-- **← Previous:** [Project 1: Secure VM Deployment](../secure-azure-vm-web/README.md)
-- **→ Next:** [Project 3: Troubleshooting Scenarios](../03-troubleshooting-scenarios/README.md)
-- **↑ Main Portfolio:** [README](../README.md)
 
 ---
 
 ## Status
 
- **Completed** | Last Updated: January 2026
+ **Completed** 
