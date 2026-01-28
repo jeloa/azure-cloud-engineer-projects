@@ -1,8 +1,5 @@
 # Project 4: Azure Cost Management & Optimization
 
-![Project Badge](https://img.shields.io/badge/Project-4-blue) ![Status](https://img.shields.io/badge/Status-Complete-success)
-## Overview
-
 This project focuses on **cost visibility, control, and optimization** — a critical but often overlooked responsibility of Junior Cloud Engineers.
 
 The goal is to demonstrate that cloud resources are not only deployed and operated correctly, but also **managed responsibly from a cost and governance perspective**. This project simulates how engineers identify waste, control spend, and apply optimizations in real environments.
