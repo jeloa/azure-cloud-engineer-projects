@@ -514,52 +514,9 @@ This project demonstrates **Level 1-2** FinOps maturity:
 -  Configure auto-start along with auto-shutdown
 -  Explore Azure Hybrid Benefit for Windows VMs (if applicable)
 
-**Continue learning:**
-- **← Previous:** [Project 3: Troubleshooting Scenarios](../03-troubleshooting-scenarios/README.md)
-- **↑ Main Portfolio:** [README](../README.md)
-
-**Complete the Portfolio Loop:**
-- **Review all 4 projects** to see the complete infrastructure lifecycle
-- **Update main README** with final learnings
-- **Share portfolio** on LinkedIn and with recruiters
-
----
-
-## Additional Resources
-
-### Azure Documentation:
-- [Azure Cost Management Overview](https://docs.microsoft.com/azure/cost-management-billing/)
-- [Azure Advisor Cost Recommendations](https://docs.microsoft.com/azure/advisor/advisor-cost-recommendations)
-- [Azure Reservations](https://docs.microsoft.com/azure/cost-management-billing/reservations/)
-- [Azure Pricing Calculator](https://azure.microsoft.com/pricing/calculator/)
-
-### Best Practices:
-- [Azure Well-Architected Framework: Cost Optimization](https://docs.microsoft.com/azure/architecture/framework/cost/)
-- [FinOps Foundation](https://www.finops.org/)
-- [Cloud FinOps Best Practices](https://docs.microsoft.com/azure/cost-management-billing/costs/cost-mgt-best-practices)
-
-### Tools:
-- [Azure TCO Calculator](https://azure.microsoft.com/pricing/tco/calculator/)
-- [Azure Migrate](https://azure.microsoft.com/services/azure-migrate/)
-- [Azure Cost Management Power BI](https://docs.microsoft.com/power-bi/connect-data/desktop-connect-azure-cost-management)
-
----
-
-##  Portfolio Navigation
-
-- **← Previous:** [Project 3: Troubleshooting Scenarios](../03-troubleshooting-scenarios/README.md)
-- **↑ Main Portfolio:** [README](../README.md)
-- ** Portfolio Complete!** Review all 4 projects:
-  - [Project 1: Secure VM Deployment](../secure-azure-vm-web/README.md)
-  - [Project 2: Monitoring & Alerts](../02-monitoring-alerts/README.md)
-  - [Project 3: Troubleshooting](../03-troubleshooting-scenarios/README.md)
-  - [Project 4: Cost Optimization](../04-cost-optimization/README.md)
 
 ---
 
 ## Status
 
  **Completed** | Last Updated: January 2026  
- **Cost Optimized**: 70% monthly savings achieved  
- **Governance Enabled**: Resource tagging implemented  
- **Budget Monitoring**: Proactive alerts configured
