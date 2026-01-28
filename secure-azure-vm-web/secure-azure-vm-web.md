@@ -1,6 +1,6 @@
 # Project 1: Secure Azure VM Hosting a Web Application
 
-![Project Badge](https://img.shields.io/badge/Project-1-blue) ![Status](https://img.shields.io/badge/Status-Complete-success) 
+
 
 ## Overview
 
@@ -385,34 +385,6 @@ az group delete --name rg-secure-vm-web --yes --no-wait
 -  Implement Azure Monitor alerts for VM availability
 -  Deploy behind Azure Application Gateway for load balancing
 
-**Continue learning:**
-- **→ Project 2:** [Monitoring, Logging & Incident Response](../02-monitoring-alerts/README.md) - Build observability for this infrastructure
-- **→ Project 3:** [Troubleshooting Scenarios](../03-troubleshooting-scenarios/README.md) - Learn systematic incident response
-- **→ Project 4:** [Cost Optimization](../04-cost-optimization/README.md) - Optimize spending and implement governance
-
----
-
-## Additional Resources
-
-### Azure Documentation:
-- [Azure Virtual Machines Documentation](https://docs.microsoft.com/azure/virtual-machines/)
-- [Network Security Groups Overview](https://docs.microsoft.com/azure/virtual-network/security-overview)
-- [Managed Identities for Azure Resources](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/)
-
-### Best Practices:
-- [Azure Security Best Practices](https://docs.microsoft.com/azure/security/fundamentals/best-practices-and-patterns)
-- [Azure Well-Architected Framework](https://docs.microsoft.com/azure/architecture/framework/)
-
-### Troubleshooting:
-- [SSH Connection Issues](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/troubleshoot-ssh-connection)
-- [NSG Diagnostics](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-diagnostics-overview)
-
----
-
-##  Portfolio Navigation
-
-- **← Back:** [Main Portfolio](../README.md)
-- **→ Next:** [Project 2: Monitoring & Alerts](../02-monitoring-alerts/README.md)
 
 ---
 
