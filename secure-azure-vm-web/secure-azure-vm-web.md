@@ -390,4 +390,4 @@ az group delete --name rg-secure-vm-web --yes --no-wait
 
 ## Status
 
- **Completed** | Last Updated: January 2026
+ **Completed** 
