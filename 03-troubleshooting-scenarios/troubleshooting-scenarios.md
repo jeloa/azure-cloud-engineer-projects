@@ -1,6 +1,6 @@
 # Project 3: Azure Infrastructure Troubleshooting & Root Cause Analysis
 
-![Project Badge](https://img.shields.io/badge/Project-3-blue) ![Status](https://img.shields.io/badge/Status-Complete-success) 
+
 
 ## Overview
 
@@ -539,41 +539,10 @@ Heartbeat
 -  Practice chaos engineering with random failures
 -  Document MTTR for each scenario type
 
-**Continue learning:**
-- **← Previous:** [Project 2: Monitoring & Alerts](../02-monitoring-alerts/README.md) - The monitoring system that detects these failures
-- **→ Next:** [Project 4: Cost Optimization](../04-cost-optimization/README.md) - Optimize the infrastructure you've been troubleshooting
-- **↑ Main Portfolio:** [README](../README.md)
 
 ---
 
-## Additional Resources
-
-### Azure Documentation:
-- [Azure Network Watcher](https://docs.microsoft.com/azure/network-watcher/)
-- [Troubleshoot Azure VM Issues](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/)
-- [Azure RBAC Troubleshooting](https://docs.microsoft.com/azure/role-based-access-control/troubleshooting)
-- [Azure Monitor Agent Troubleshooting](https://docs.microsoft.com/azure/azure-monitor/agents/azure-monitor-agent-troubleshoot)
-
-### Best Practices:
-- [SRE Incident Response](https://sre.google/workbook/incident-response/)
-- [Azure Architecture Center - Troubleshooting](https://docs.microsoft.com/azure/architecture/framework/devops/troubleshooting)
-- [Postmortem Culture](https://sre.google/sre-book/postmortem-culture/)
-
-### Troubleshooting Guides:
-- [NSG Flow Logs](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-overview)
-- [Linux Disk Space Management](https://www.tecmint.com/find-top-large-directories-and-files-sizes-in-linux/)
-- [Systemd Service Management](https://www.digitalocean.com/community/tutorials/how-to-use-systemctl-to-manage-systemd-services-and-units)
-
----
-
-##  Portfolio Navigation
-
-- **← Previous:** [Project 2: Monitoring & Alerts](../02-monitoring-alerts/README.md)
-- **→ Next:** [Project 4: Cost Optimization](../04-cost-optimization/README.md)
-- **↑ Main Portfolio:** [README](../README.md)
-
----
 
 ## Status
 
- **Completed** | Last Updated: January 2026
+ **Completed**
