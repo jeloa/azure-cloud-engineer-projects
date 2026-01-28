@@ -36,9 +36,6 @@ The environment is built inside a dedicated Azure Resource Group using a modular
 * **Linux Administration:** Remote configuration and Nginx deployment via secure shell.
 * **Governance:** Using standardized naming conventions (e.g., `rg-`, `vnet-`, `nsg-`).
 
-## Impact 
-This project serves as a template for a **production-ready landing zone**. It highlights the balance between accessibility (keeping the site live) and security (keeping the server invisible to attackers). 
-
 
 ---
 
