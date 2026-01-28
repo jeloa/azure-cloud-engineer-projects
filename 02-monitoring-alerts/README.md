@@ -45,6 +45,3 @@ The monitoring ecosystem follows a structured telemetry pipeline:
 ## Impact & Lessons Learned
 This project transitioned the environment into a **Production-Ready** state. The primary takeaway was that **monitoring is a feedback loop**: a metric without an alert is just noise, and an alert without an action is a distraction. I now have a validated framework for detecting and responding to infrastructure degradation.
 
-**Status:** Completed  
-**Role:** Junior Cloud Engineer  
-**Clean-up:** Alerts disabled and logs cleared post-validation to maintain cost hygiene.
