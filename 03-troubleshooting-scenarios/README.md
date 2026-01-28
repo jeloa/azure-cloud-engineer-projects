@@ -61,6 +61,4 @@ The project follows a standard remediation lifecycle to ensure that every fix is
 ## Impact & Lessons Learned
 This project underscores that **visibility is the first step of security**. Without working monitoring (Scenario 4) or correct permissions (Scenario 3), a cloud environment is unmanageable. I learned to move beyond "restarting the VM" and instead look for root causes, whether it's a specific NSG priority number or a specific directory consuming disk space.
 
-**Status**: Completed  
-**Role**: Junior Cloud Engineer  
-**Clean-up**: All resources deleted post-validation to maintain cost hygiene.
+
